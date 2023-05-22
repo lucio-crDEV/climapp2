@@ -1,0 +1,15 @@
+<!-- index.html.html -->
+{% extends 'base.html' %} 
+
+{% block content %}
+    <!-- Contenido específico de la página index.html -->
+    <h2>Información del clima</h2>
+
+    {% if temperatura %}
+        <p>El pronóstico para hoy es principlmente {{ description }}</p>
+        <p>La temperatura actual es de {{ temperatura }}°C</p>
+        <p>En {{ ciudad }}</p>
+    {% else %}
+        <p>No se pudo obtener la información del clima.</p>
+    {% endif %} 
+{% endblock %}
