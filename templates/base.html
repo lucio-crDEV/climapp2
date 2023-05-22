@@ -7,6 +7,7 @@
     <link rel="stylesheet" href="{{ url_for('static', filename='css/styles.css') }}">
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Climapp</title>
+    <script src="https://code.jquery.com/jquery-3.7.0.js" integrity="sha256-JlqSTELeR4TLqP0OG9dxM7yDPqX1ox/HfgiSLBj8+kM=" crossorigin="anonymous"></script>
   </head>
   <body>
     <header>
@@ -27,6 +28,34 @@
       <!-- Otros elementos comunes del pie de página -->
     </footer>
 
-    <!-- Agrega aquí tus scripts JavaScript comunes -->
+    <script>
+      // Función para enviar las coordenadas de geolocalización al servidor
+      function enviarCoordenadas(latitude, longitude) {
+        // Enviar las coordenadas al servidor Flask
+        $.ajax({
+          url: '/obtener_clima',
+          method: 'POST',
+          contentType: 'application/json',
+          data: JSON.stringify({ latitude: latitude, longitude: longitude }),
+          success: function(response) {
+            // Manejar la respuesta del servidor
+            console.log(response);
+          },
+          error: function(error) {
+            // Manejar los errores de la solicitud
+            console.error(error);
+          }
+        });
+      }
+
+      // Obtener las coordenadas de geolocalización del cliente
+      navigator.geolocation.getCurrentPosition(function(position) {
+        var latitude = position.coords.latitude;
+        var longitude = position.coords.longitude;
+
+        // Enviar las coordenadas al servidor
+        enviarCoordenadas(latitude, longitude);
+      });
+    </script>
   </body>
 </html>
