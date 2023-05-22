@@ -19,6 +19,15 @@
 
   <main>
     {% block content %}
+    <h2>Información del clima</h2>
+    <div id="contenido-clima" style="display: none;">
+      <p>El pronóstico para hoy es principalmente <span id="descripcion"></span>.</p>
+      <p>La temperatura actual es de <span id="temperatura"></span>°C.</p>
+      <p>En <span id="ciudad"></span>.</p>
+    </div>
+    <div id="mensaje-error" style="display: none;">
+      <p>No se pudo obtener la información del clima.</p>
+    </div>
     {% endblock %}
   </main>
 
@@ -44,10 +53,14 @@
             $('#ciudad').text(response.ciudad);
             $('#descripcion').text(response.descripcion);
             $('#temperatura').text(response.temperatura);
+            // Mostrar el contenido del clima
+            $('#contenido-clima').show();
           },
           error: function(error) {
             // Manejar los errores de la solicitud
             console.error(error);
+            // Mostrar el mensaje de error
+            $('#mensaje-error').show();
           }
         });
       }
@@ -59,6 +72,11 @@
 
         // Enviar las coordenadas al servidor
         enviarCoordenadas(latitude, longitude);
+      }, function(error) {
+        // Manejar el error de obtener la ubicación
+        console.error(error);
+        // Mostrar el mensaje de error
+        $('#mensaje-error').show();
       });
     });
   </script>
