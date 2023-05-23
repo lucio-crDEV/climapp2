@@ -13,9 +13,15 @@ def obtener_clima():
     latitud = request.json['latitude']
     longitud = request.json['longitude']
 
-    # Obtener el clima utilizando OpenWeatherMap
+    # Obtener ciudad a traves de lat y long utilizando OpenWeatherMap
     api_key = "b64adc30c1f48fab515ab9bbc5a50921"
-    url_clima = f"http://api.openweathermap.org/data/2.5/weather?lat={latitud}&lon={longitud}&lang=es&units=metric&appid={api_key}"
+    url_clima_bruto = f"http://api.openweathermap.org/data/2.5/weather?lat={latitud}&lon={longitud}&appid={api_key}"
+    response_clima_bruto = requests.get(url_clima_bruto)
+    data_clima_bruto = response_clima_bruto.json()
+    ciudad = data_clima_bruto['name']
+
+    #Obtener clima de ciudad del usuario
+    url_clima = f"http://api.openweathermap.org/data/2.5/weather?q={ciudad}&lang=es&units=metric&appid={api_key}"
     response_clima = requests.get(url_clima)
     data_clima = response_clima.json()
 
@@ -23,7 +29,6 @@ def obtener_clima():
     temperatura = data_clima['main']['temp']
     temperatura_max = data_clima['main']['temp_max']
     temperatura_min = data_clima['main']['temp_min']
-    ciudad = data_clima['name']
     icono_code = data_clima['weather'][0]['icon']
     descripcion = data_clima['weather'][0]['description']
 
