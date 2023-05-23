@@ -28,7 +28,7 @@
 <body class="container bg-dark">
   <header class="mt-4">
     <!-- Encabezado común de la aplicación -->
-    <h1>Clima</h1>
+    <h1 class="text-center">Clima</h1>
     <hr>
     <!-- Otros elementos comunes del encabezado -->
   </header>
@@ -38,7 +38,7 @@
     {% endblock %}
   </main>
 
-  <footer class="text-center">
+  <footer class="text-center pt-5">
     <!-- Pie de página común de la aplicación -->
     <small class="small">Chily, 2023</small>
     <!-- Otros elementos comunes del pie de página -->
@@ -60,7 +60,17 @@
             $('#ciudad').text(response.ciudad);
             $('#descripcion').text(response.descripcion);
             $('#temperatura').text(response.temperatura);
+            $('#temp_max').text(response.temperatura_max);
+            $('#temp_min').text(response.temperatura_min);
+
+            // Construir la URL de la imagen con el valor del icono
+            var imgUrl = 'https://openweathermap.org/img/wn/' + response.icono + '@2x.png';
+            
+            // Asignar la URL de la imagen al atributo src de la etiqueta img
+            $('#icono').attr('src', imgUrl);
+            
             // Mostrar el contenido del clima
+            $('.cargando').hide();
             $('#contenido-clima').show();
           },
           error: function(error) {
@@ -83,6 +93,7 @@
         // Manejar el error de obtener la ubicación
         console.error(error);
         // Mostrar el mensaje de error
+        $('.cargando').hide();
         $('#mensaje-error').show();
       });
     });

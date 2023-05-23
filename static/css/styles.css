@@ -4,6 +4,13 @@
     font-family: 'Sora', sans-serif;
 }
 
+body{
+    background: conic-gradient(at right top, rgb(251, 113, 133), rgb(217, 70, 239), rgb(99, 102, 241));
+    height: 100vh;
+    overflow-y: hidden;
+    scroll-behavior: smooth;
+}
+
 .footer{
     font-weight: 100;
 }

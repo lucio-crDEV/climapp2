@@ -1,14 +1,28 @@
 <!-- index.html -->
 {% extends 'base.html' %} 
 {% block content %}
-    <h2>Información del clima</h2>
-    <div id="contenido-clima" style="display: none;">
-      <p>El pronóstico para hoy es principalmente <span id="descripcion"></span>.</p>
-      <p>La temperatura actual es de <span id="temperatura"></span>°C.</p>
-      <p>En <span id="ciudad"></span>.</p>
+    <h2 class="text-center">Información del clima</h2>
+    <div class="cargando text-center">
+      <div class="spinner-grow mb-4" style="width: 3rem; height: 3rem;" role="status">
+        <span class="sr-only">Loading...</span>
+      </div>
+    </div>
+    <div class="text-center" id="contenido-clima" style="display: none;">
+      <p>El pronóstico para hoy en <strong><span id="ciudad"></span></strong> </p>
+      <p>es principalmente <span id="descripcion"></span>.</p>
+      <img id="icono" alt="Icono del clima" srcset="">
+      <br>
+      <p>La temperatura actual es de</p>
+      <p class="h3"><span id="temperatura"></span>°C.</p>
+      
+      <hr>
+      <p>Además esperamos:</p>
+      <p class="h6">Máximas de <span id="temp_max"></span>°C</p>
+      <p class="h6">Mínimas de <span id="temp_min"></span>°C</p>
+
     </div>
     <div id="mensaje-error" style="display: none;">
       <p class="text-warning">No se pudo obtener la información del clima.</p>
       <p class="text-warning">Debes autorizar el acceso a tu ubicación</p>
     </div>
-{% endblock %} 
+{% endblock %}
