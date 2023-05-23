@@ -21,8 +21,8 @@ def obtener_clima():
 
     # Obtener la temperatura actual, ciudad y descripción del clima
     temperatura = data_clima['main']['temp']
-    temperatura_max = data_clima['main']['temp_min']
-    temperatura_min = data_clima['main']['temp_max']
+    temperatura_max = data_clima['main']['temp_max']
+    temperatura_min = data_clima['main']['temp_min']
     ciudad = data_clima['name']
     icono_code = data_clima['weather'][0]['icon']
     descripcion = data_clima['weather'][0]['description']
