@@ -63,6 +63,8 @@
             $('#temp_max').text(response.temperatura_max);
             $('#temp_min').text(response.temperatura_min);
 
+            console.log({response})
+
             // Construir la URL de la imagen con el valor del icono
             var imgUrl = 'https://openweathermap.org/img/wn/' + response.icono + '@2x.png';
             
