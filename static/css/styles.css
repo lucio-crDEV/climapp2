@@ -1,5 +1,4 @@
 *{
-    color: #fff;
     font-family: 'Montserrat', sans-serif;
     font-family: 'Sora', sans-serif;
 }
@@ -11,6 +10,13 @@ body{
     scroll-behavior: smooth;
 }
 
+.titulo{
+    color: #fff;
+    font-weight: 600;
+}
+
+
 .footer{
     font-weight: 100;
+    color: #eab3fa;
 }

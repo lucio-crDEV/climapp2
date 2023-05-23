@@ -41,4 +41,4 @@ def obtener_clima():
     return jsonify(clima)
 
 if __name__ == '__main__':
-    app.run()
+    app.run(debug=True)

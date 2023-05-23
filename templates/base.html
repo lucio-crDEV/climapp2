@@ -1,104 +1,115 @@
 <!DOCTYPE html>
 <html lang="en">
-<head>
-  <meta charset="UTF-8">
-  <meta http-equiv="X-UA-Compatible" content="IE=edge">
-  <link rel="shortcut icon" href="{{ url_for('static', filename='favicon.ico') }}"/>
-  <link rel="stylesheet" href="{{ url_for('static', filename='css/styles.css') }}">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Climapp</title>
- <!-- jQuery -->
- <script src="https://code.jquery.com/jquery-3.7.0.min.js"></script>
- <!-- Bootstrap css -->
- <link
-   rel="stylesheet"
-   href="https://cdn.jsdelivr.net/npm/bootstrap@4.3.1/dist/css/bootstrap.min.css"
-   integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T"
-   crossorigin="anonymous"
- />
- <!-- fonts -->
- <link rel="preconnect" href="https://fonts.googleapis.com" />
- <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
- <link
-   href="https://fonts.googleapis.com/css2?family=Montserrat:wght@100;300;400;600;700;800&family=Sora:wght@400;600;700&display=swap"
-   rel="stylesheet"
- />
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <!-- no cache -->
+    <meta http-equiv="Cache-control" content="no-cache" />
+    <link
+      rel="shortcut icon"
+      href="{{ url_for('static', filename='favicon.ico') }}"
+    />
+    <link
+      rel="stylesheet"
+      href="{{ url_for('static', filename='css/styles.css') }}"
+    />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Climapp</title>
+    <!-- jQuery -->
+    <script src="https://code.jquery.com/jquery-3.7.0.min.js"></script>
+    <!-- Bootstrap css -->
+    <link
+      rel="stylesheet"
+      href="https://cdn.jsdelivr.net/npm/bootstrap@4.3.1/dist/css/bootstrap.min.css"
+      integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T"
+      crossorigin="anonymous"
+    />
+    <!-- fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Montserrat:wght@100;300;400;600;700;800&family=Sora:wght@400;600;700&display=swap"
+      rel="stylesheet"
+    />
+  </head>
 
-</head>
-<body class="container bg-dark">
-  <header class="mt-4">
-    <!-- Encabezado común de la aplicación -->
-    <h1 class="text-center">Clima</h1>
-    <hr>
-    <!-- Otros elementos comunes del encabezado -->
-  </header>
+  <body class="container bg-dark">
+    <header class="mt-4">
+      <!-- Encabezado común de la aplicación -->
+      <h1 class="text-center titulo">Clima</h1>
+      <hr />
+      <!-- Otros elementos comunes del encabezado -->
+    </header>
 
-  <main>
-    {% block content %}
-    {% endblock %}
-  </main>
+    <main>{% block content %} {% endblock %}</main>
 
-  <footer class="text-center pt-5">
-    <!-- Pie de página común de la aplicación -->
-    <small class="small">Chily, 2023</small>
-    <!-- Otros elementos comunes del pie de página -->
-  </footer>
+    <footer class="text-center pt-5 footer">
+      <!-- Pie de página común de la aplicación -->
+      <small class="small">Chily, 2023</small>
+      <!-- Otros elementos comunes del pie de página -->
+    </footer>
 
-  <!-- Agrega aquí tus scripts JavaScript comunes -->
-  <script>
-    $(document).ready(function() {
-      // Función para enviar las coordenadas de geolocalización al servidor
-      function enviarCoordenadas(latitude, longitude) {
-        // Enviar las coordenadas al servidor Flask
-        $.ajax({
-          url: '/obtener_clima',
-          method: 'POST',
-          contentType: 'application/json',
-          data: JSON.stringify({ latitude: latitude, longitude: longitude }),
-          success: function(response) {
-            // Actualizar los elementos HTML con los datos del clima
-            $('#ciudad').text(response.ciudad);
-            $('#descripcion').text(response.descripcion);
-            $('#temperatura').text(response.temperatura);
-            $('#temp_max').text(response.temperatura_max);
-            $('#temp_min').text(response.temperatura_min);
+    <!-- Agrega aquí tus scripts JavaScript comunes -->
+    <script>
+      $(document).ready(function () {
+        // Función para enviar las coordenadas de geolocalización al servidor
+        function enviarCoordenadas(latitude, longitude) {
+          // Enviar las coordenadas al servidor Flask
+          $.ajax({
+            url: "/obtener_clima",
+            method: "POST",
+            contentType: "application/json",
+            data: JSON.stringify({ latitude: latitude, longitude: longitude }),
+            success: function (response) {
+              // Actualizar los elementos HTML con los datos del clima
+              $("#ciudad").text(response.ciudad);
+              $("#descripcion").text(response.descripcion);
+              $("#temperatura").text(response.temperatura);
+              $("#temp_max").text(response.temperatura_max);
+              $("#temp_min").text(response.temperatura_min);
 
-            console.log({response})
+              console.log({ response });
 
-            // Construir la URL de la imagen con el valor del icono
-            var imgUrl = 'https://openweathermap.org/img/wn/' + response.icono + '@2x.png';
-            
-            // Asignar la URL de la imagen al atributo src de la etiqueta img
-            $('#icono').attr('src', imgUrl);
-            
-            // Mostrar el contenido del clima
-            $('.cargando').hide();
-            $('#contenido-clima').show();
+              // Construir la URL de la imagen con el valor del icono
+              var imgUrl =
+                "https://openweathermap.org/img/wn/" +
+                response.icono +
+                "@2x.png";
+
+              // Asignar la URL de la imagen al atributo src de la etiqueta img
+              $("#icono").attr("src", imgUrl);
+
+              // Mostrar el contenido del clima
+              $(".cargando").hide();
+              $("#contenido-clima").show();
+            },
+            error: function (error) {
+              // Manejar los errores de la solicitud
+              console.error(error);
+              // Mostrar el mensaje de error
+              $("#mensaje-error").show();
+            },
+          });
+        }
+
+        // Obtener las coordenadas de geolocalización del cliente
+        navigator.geolocation.getCurrentPosition(
+          function (position) {
+            var latitude = position.coords.latitude;
+            var longitude = position.coords.longitude;
+
+            // Enviar las coordenadas al servidor
+            enviarCoordenadas(latitude, longitude);
           },
-          error: function(error) {
-            // Manejar los errores de la solicitud
+          function (error) {
+            // Manejar el error de obtener la ubicación
             console.error(error);
             // Mostrar el mensaje de error
-            $('#mensaje-error').show();
+            $(".cargando").hide();
+            $("#mensaje-error").show();
           }
-        });
-      }
-
-      // Obtener las coordenadas de geolocalización del cliente
-      navigator.geolocation.getCurrentPosition(function(position) {
-        var latitude = position.coords.latitude;
-        var longitude = position.coords.longitude;
-
-        // Enviar las coordenadas al servidor
-        enviarCoordenadas(latitude, longitude);
-      }, function(error) {
-        // Manejar el error de obtener la ubicación
-        console.error(error);
-        // Mostrar el mensaje de error
-        $('.cargando').hide();
-        $('#mensaje-error').show();
+        );
       });
-    });
-  </script>
-</body>
+    </script>
+  </body>
 </html>

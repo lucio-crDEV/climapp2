@@ -1,28 +1,65 @@
 <!-- index.html -->
-{% extends 'base.html' %} 
-{% block content %}
-    <h2 class="text-center">Información del clima</h2>
-    <div class="cargando text-center">
-      <div class="spinner-grow mb-4" style="width: 3rem; height: 3rem;" role="status">
-        <span class="sr-only">Loading...</span>
+{% extends 'base.html' %} {% block content %}
+<div class="container-fluid">
+  <div class="card text-white bg-dark text-center mb-3">
+    <div class="card-header">
+      <h2>Información del clima</h2>
+    </div>
+    <div class="card-body">
+      <div class="cargando">
+        <div
+          class="spinner-grow mb-4"
+          style="width: 3rem; height: 3rem"
+          role="status"
+        >
+          <span class="sr-only">Loading...</span>
+        </div>
+      </div>
+      <div id="contenido-clima" style="display: none">
+        <p>
+          El pronóstico para hoy en <strong><span id="ciudad"></span></strong>
+        </p>
+        <p>es principalmente <span id="descripcion"></span>.</p>
+        <img id="icono" alt="Icono del clima" srcset="" />
+        <br />
+        <p>La temperatura actual es de</p>
+        <p class="h3"><span id="temperatura"></span>°C.</p>
+
+        <hr />
+        <p>Además esperamos:</p>
+        <p class="h6">Máximas de <span id="temp_max"></span>°C</p>
+        <p class="h6">Mínimas de <span id="temp_min"></span>°C</p>
+      </div>
+      <div id="mensaje-error" style="display: none" class="text-left ml-4">
+        <p class="text-warning">⚠️ No se pudo obtener la información del clima.</p>
+        <img href="{{ url_for('static', filename='svg/error.svg') }}" alt="" srcset="">
+        <p id="autoriza" class="text-danger d-none">⛔ Debes autorizar el acceso a tu ubicación. Si no sabes cómo te dejo el siguiente <a class="text-primary" target="_blank" href="https://support.google.com/chrome/answer/142065?hl=Es-419&ref_topic=7439541" style="cursor: pointer;">Link</a>.</p>
+        <br />
+        <p class="text-success d-none authOk">
+          ✅ Si ya autorizaste los permisos de ubicación puedes recargar la
+          página para obtener tus resultados
+        </p>
+        <div class="text-center mt-4">
+          <button class="btn btn-primary d-none authOk" onclick="window.location.reload(true);">Recargar</button>
+        </div>
       </div>
     </div>
-    <div class="text-center" id="contenido-clima" style="display: none;">
-      <p>El pronóstico para hoy en <strong><span id="ciudad"></span></strong> </p>
-      <p>es principalmente <span id="descripcion"></span>.</p>
-      <img id="icono" alt="Icono del clima" srcset="">
-      <br>
-      <p>La temperatura actual es de</p>
-      <p class="h3"><span id="temperatura"></span>°C.</p>
-      
-      <hr>
-      <p>Además esperamos:</p>
-      <p class="h6">Máximas de <span id="temp_max"></span>°C</p>
-      <p class="h6">Mínimas de <span id="temp_min"></span>°C</p>
+  </div>
+</div>
 
-    </div>
-    <div id="mensaje-error" style="display: none;">
-      <p class="text-warning">No se pudo obtener la información del clima.</p>
-      <p class="text-warning">Debes autorizar el acceso a tu ubicación</p>
-    </div>
+<script>
+  $(document).ready(function () {
+    function mostrarMensaje() {
+      setTimeout(() => {
+        $("#autoriza").removeClass('d-none')
+        setTimeout(() => {
+          $(".authOk").removeClass('d-none')
+F        }, 6000);
+      }, 2000);
+    };
+  
+    mostrarMensaje();
+  });
+</script>
+
 {% endblock %}
