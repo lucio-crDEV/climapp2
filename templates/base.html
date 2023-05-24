@@ -6,47 +6,31 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge" />
     <!-- no cache -->
     <meta http-equiv="Cache-control" content="no-cache" />
-    <link
-      rel="shortcut icon"
-      href="{{ url_for('static', filename='favicon.ico') }}"
-    />
-    <link
-      rel="stylesheet"
-      href="{{ url_for('static', filename='css/styles.css') }}"
-    />
+
+    <meta name="description" content="El objetivo de esta app es mostrar el pronóstico del clima actual y las temperaturas máximas y mínimas para la ubicación del usuario.">
+    <meta property="og:description" content="El objetivo de esta app es mostrar el pronóstico del clima actual y las temperaturas máximas y mínimas para la ubicación del usuario.">
+    <meta property="og:image" content="https://i.imgur.com/4ghT793.png">
+    <meta property="og.type" content="non_profit">
+    <meta name="twitter:description" content="El objetivo de esta app es mostrar el pronóstico del clima actual y las temperaturas máximas y mínimas para la ubicación del usuario.">
+    <meta name="twitter:image" content="https://i.imgur.com/4ghT793.png">
+
+    <link rel="shortcut icon" href="{{ url_for('static', filename='favicon.ico') }}" />
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/styles.css') }}"/>
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Climapp</title>
     <!-- Bootstrap css -->
-    <link
-      rel="stylesheet"
-      href="https://cdn.jsdelivr.net/npm/bootstrap@4.3.1/dist/css/bootstrap.min.css"
-      integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T"
-      crossorigin="anonymous"
-    />
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.3.1/dist/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous"/>
     <!-- jQuery -->
-    <script
-      src="https://code.jquery.com/jquery-3.7.0.js"
-      integrity="sha256-JlqSTELeR4TLqP0OG9dxM7yDPqX1ox/HfgiSLBj8+kM="
-      crossorigin="anonymous"
-    ></script>
+    <script src="https://code.jquery.com/jquery-3.7.0.js" integrity="sha256-JlqSTELeR4TLqP0OG9dxM7yDPqX1ox/HfgiSLBj8+kM=" crossorigin="anonymous"></script>
     <!-- fonts -->
     <link rel="preconnect" href="https://fonts.googleapis.com" />
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-    <link
-      href="https://fonts.googleapis.com/css2?family=Montserrat:wght@100;300;400;600;700;800&family=Sora:wght@400;600;700&display=swap"
-      rel="stylesheet"
-    />
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@100;300;400;600;700;800&family=Sora:wght@400;600;700&display=swap" rel="stylesheet" />
     <!-- Animate css -->
-    <link
-      rel="stylesheet"
-      href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/4.1.1/animate.min.css"
-    />
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/4.1.1/animate.min.css" />
 
     <!-- Font Awesome -->
-    <script
-      src="https://kit.fontawesome.com/61042a5f3b.js"
-      crossorigin="anonymous"
-    ></script>
+    <script src="https://kit.fontawesome.com/61042a5f3b.js" crossorigin="anonymous" ></script>
   </head>
 
   <body class="container bg-dark">
@@ -153,7 +137,7 @@
           switch (descripcion) {
             case "Despejado":
             case "Principalmente despejado":
-              icono = "fa-sun";
+              icono = "fa-sun text-warning";
               break;
             case "Parcialmente nublado":
               icono = "fa-cloud-sun";
