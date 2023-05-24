@@ -1,3 +1,4 @@
+<!-- base.html -->
 <!DOCTYPE html>
 <html lang="en">
   <head>
@@ -15,8 +16,6 @@
     />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Climapp</title>
-    <!-- jQuery -->
-    <script src="https://code.jquery.com/jquery-3.7.0.min.js"></script>
     <!-- Bootstrap css -->
     <link
       rel="stylesheet"
@@ -24,6 +23,12 @@
       integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T"
       crossorigin="anonymous"
     />
+    <!-- jQuery -->
+    <script
+      src="https://code.jquery.com/jquery-3.7.0.js"
+      integrity="sha256-JlqSTELeR4TLqP0OG9dxM7yDPqX1ox/HfgiSLBj8+kM="
+      crossorigin="anonymous"
+    ></script>
     <!-- fonts -->
     <link rel="preconnect" href="https://fonts.googleapis.com" />
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
@@ -31,6 +36,17 @@
       href="https://fonts.googleapis.com/css2?family=Montserrat:wght@100;300;400;600;700;800&family=Sora:wght@400;600;700&display=swap"
       rel="stylesheet"
     />
+    <!-- Animate css -->
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/4.1.1/animate.min.css"
+    />
+
+    <!-- Font Awesome -->
+    <script
+      src="https://kit.fontawesome.com/61042a5f3b.js"
+      crossorigin="anonymous"
+    ></script>
   </head>
 
   <body class="container bg-dark">
@@ -41,7 +57,7 @@
       <!-- Otros elementos comunes del encabezado -->
     </header>
 
-    <main>{% block content %} {% endblock %}</main>
+    <main>{% block content %}{% endblock %}</main>
 
     <footer class="text-center pt-5 footer">
       <!-- Pie de página común de la aplicación -->
@@ -51,33 +67,71 @@
 
     <!-- Agrega aquí tus scripts JavaScript comunes -->
     <script>
+      // main.js
       $(document).ready(function () {
-        // Función para enviar las coordenadas de geolocalización al servidor
-        function enviarCoordenadas(latitude, longitude) {
-          // Enviar las coordenadas al servidor Flask
+        // Obtener los elementos HTML
+        var ciudadElement = $("#ciudad");
+        var descripcionElement = $("#descripcion");
+        var temperaturaElement = $("#temperatura");
+        var temperaturaMinElement = $("#temp_min");
+        var temperaturaMaxElement = $("#temp_max");
+        var latitudElement = $("#latitud");
+        var longitudElement = $("#longitud");
+        var iconoElement = $("#icono");
+
+        // Obtener la ubicación actual del usuario
+        function obtenerUbicacion() {
+          if (navigator.geolocation) {
+            navigator.geolocation.getCurrentPosition(
+              function (position) {
+                var latitude = position.coords.latitude;
+                var longitude = position.coords.longitude;
+
+                // Actualizar los elementos HTML con las coordenadas
+                latitudElement.text(latitude.toFixed(6));
+                longitudElement.text(longitude.toFixed(6));
+
+                // Obtener el clima utilizando las coordenadas
+                obtenerClima(latitude, longitude);
+              },
+
+              function (error) {
+                // Manejar el error de obtener la ubicación
+                console.error(error);
+                // Mostrar el mensaje de error
+                $(".cargando").hide();
+                $("#mensaje-error").show();
+                $("#svgWrapper").show();
+              }
+            );
+          } else {
+            alert("La geolocalización no es compatible en este navegador.");
+          }
+        }
+
+        // Obtener el clima utilizando las coordenadas
+        function obtenerClima(latitude, longitude) {
+          var data = {
+            latitude: latitude,
+            longitude: longitude,
+          };
+
+          // Realizar una solicitud POST al servidor para obtener el clima
           $.ajax({
             url: "/obtener_clima",
-            method: "POST",
+            type: "POST",
             contentType: "application/json",
-            data: JSON.stringify({ latitude: latitude, longitude: longitude }),
+            data: JSON.stringify(data),
             success: function (response) {
-              // Actualizar los elementos HTML con los datos del clima
-              $("#ciudad").text(response.ciudad);
-              $("#descripcion").text(response.descripcion);
-              $("#temperatura").text(response.temperatura);
-              $("#temp_max").text(response.temperatura_max);
-              $("#temp_min").text(response.temperatura_min);
+              // Actualizar los elementos HTML con la información del clima
+              ciudadElement.text(response.ciudad);
+              descripcionElement.text(response.descripcion);
+              temperaturaElement.text(response.temperatura);
+              temperaturaMinElement.text(response.temperatura_min);
+              temperaturaMaxElement.text(response.temperatura_max);
 
-              console.log({ response });
-
-              // Construir la URL de la imagen con el valor del icono
-              var imgUrl =
-                "https://openweathermap.org/img/wn/" +
-                response.icono +
-                "@2x.png";
-
-              // Asignar la URL de la imagen al atributo src de la etiqueta img
-              $("#icono").attr("src", imgUrl);
+              // Obtener el icono correspondiente al clima
+              obtenerIconoClima(response.descripcion);
 
               // Mostrar el contenido del clima
               $(".cargando").hide();
@@ -92,23 +146,65 @@
           });
         }
 
-        // Obtener las coordenadas de geolocalización del cliente
-        navigator.geolocation.getCurrentPosition(
-          function (position) {
-            var latitude = position.coords.latitude;
-            var longitude = position.coords.longitude;
+        // Obtener el icono correspondiente al clima utilizando la descripción
+        function obtenerIconoClima(descripcion) {
+          var icono = "";
 
-            // Enviar las coordenadas al servidor
-            enviarCoordenadas(latitude, longitude);
-          },
-          function (error) {
-            // Manejar el error de obtener la ubicación
-            console.error(error);
-            // Mostrar el mensaje de error
-            $(".cargando").hide();
-            $("#mensaje-error").show();
+          switch (descripcion) {
+            case "Despejado":
+            case "Principalmente despejado":
+              icono = "fa-sun";
+              break;
+            case "Parcialmente nublado":
+              icono = "fa-cloud-sun";
+              break;
+            case "Nublado":
+              icono = "fa-cloud";
+              break;
+            case "Niebla":
+              icono = "fa-smog";
+              break;
+            case "Niebla con escarcha":
+              icono = "fa-smog"; // Opcional: puedes asignar un ícono diferente si lo deseas
+              break;
+            case "Llovizna ligera":
+            case "Llovizna moderada":
+            case "Llovizna densa":
+              icono = "fa-cloud-rain";
+              break;
+            case "Lluvia ligera":
+            case "Lluvia moderada":
+            case "Lluvia fuerte":
+            case "Lluvia helada ligera":
+            case "Lluvia helada fuerte":
+              icono = "fa-cloud-showers-heavy";
+              break;
+            case "Nieve ligera":
+            case "Nieve moderada":
+            case "Nieve fuerte":
+            case "Granos de nieve o cinarra":
+              icono = "fa-snowflake";
+              break;
+            case "Lluvia leve":
+            case "Lluvia moderada":
+            case "Lluvia violenta":
+              icono = "fa-cloud-rain";
+              break;
+            case "Chubascos de nieve leves":
+            case "Chubascos de nieve fuertes":
+              icono = "fa-snowflake"; // Opcional: puedes asignar un ícono diferente si lo deseas
+              break;
+            default:
+              icono = "fa-question";
+              break;
           }
-        );
+
+          // Actualizar el elemento HTML con el icono correspondiente
+          iconoElement.attr("class", "fas " + icono);
+        }
+
+        // Obtener la ubicación y el clima al cargar la página
+        obtenerUbicacion();
       });
     </script>
   </body>

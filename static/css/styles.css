@@ -15,8 +15,13 @@ body{
     font-weight: 600;
 }
 
-
 .footer{
     font-weight: 100;
     color: #eab3fa;
+}
+
+#svgError{
+    margin: auto;
+    height: 40px;
+    width: 40px;
 }

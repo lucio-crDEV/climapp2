@@ -20,27 +20,52 @@
           El pronóstico para hoy en <strong><span id="ciudad"></span></strong>
         </p>
         <p>es principalmente <span id="descripcion"></span>.</p>
-        <img id="icono" alt="Icono del clima" srcset="" />
+        <i id="icono" class="fas"></i>
         <br />
         <p>La temperatura actual es de</p>
-        <p class="h3"><span id="temperatura"></span>°C.</p>
+        <p class="h3"><span id="temperatura"></span>°C</p>
 
         <hr />
         <p>Además esperamos:</p>
         <p class="h6">Máximas de <span id="temp_max"></span>°C</p>
         <p class="h6">Mínimas de <span id="temp_min"></span>°C</p>
       </div>
+      
+      <div id="svgWrapper" class="mt-2 mb-4 text-center animate__animated animate__heartBeat animate__repeat-3" style="display: none;">
+        <img
+          class="animate__animated animate__heartBeat animate__repeat-2 animate__delay-4s"
+          id="svgError"
+          src="{{ url_for('static', filename='svg/error.svg') }}"
+          alt="Geo error"
+        />
+      </div>
+
       <div id="mensaje-error" style="display: none" class="text-left ml-4">
-        <p class="text-warning">⚠️ No se pudo obtener la información del clima.</p>
-        <img href="{{ url_for('static', filename='svg/error.svg') }}" alt="" srcset="">
-        <p id="autoriza" class="text-danger d-none">⛔ Debes autorizar el acceso a tu ubicación. Si no sabes cómo te dejo el siguiente <a class="text-primary" target="_blank" href="https://support.google.com/chrome/answer/142065?hl=Es-419&ref_topic=7439541" style="cursor: pointer;">Link</a>.</p>
-        <br />
+        <p class="text-warning">
+          ⚠️ No se pudo obtener la información del clima.
+        </p>
+        <p id="autoriza" class="text-danger d-none">
+          ⛔ Debes autorizar el acceso a tu ubicación. Si no sabes cómo te dejo
+          el siguiente
+          <a
+            class="text-primary"
+            target="_blank"
+            href="https://support.google.com/chrome/answer/142065?hl=Es-419&ref_topic=7439541"
+            style="cursor: pointer"
+            >Link</a
+          >.
+        </p>
         <p class="text-success d-none authOk">
           ✅ Si ya autorizaste los permisos de ubicación puedes recargar la
           página para obtener tus resultados
         </p>
         <div class="text-center mt-4">
-          <button class="btn btn-primary d-none authOk" onclick="window.location.reload(true);">Recargar</button>
+          <button
+            class="btn btn-primary d-none authOk"
+            onclick="window.location.reload(true);"
+          >
+            Recargar
+          </button>
         </div>
       </div>
     </div>
@@ -51,13 +76,13 @@
   $(document).ready(function () {
     function mostrarMensaje() {
       setTimeout(() => {
-        $("#autoriza").removeClass('d-none')
+        $("#autoriza").removeClass("d-none");
         setTimeout(() => {
-          $(".authOk").removeClass('d-none')
-F        }, 6000);
+          $(".authOk").removeClass("d-none");
+        }, 6000);
       }, 2000);
-    };
-  
+    }
+
     mostrarMensaje();
   });
 </script>
