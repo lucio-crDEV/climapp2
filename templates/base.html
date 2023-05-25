@@ -9,10 +9,10 @@
 
     <meta name="description" content="El objetivo de esta app es mostrar el pronóstico del clima actual y las temperaturas máximas y mínimas para la ubicación del usuario.">
     <meta property="og:description" content="El objetivo de esta app es mostrar el pronóstico del clima actual y las temperaturas máximas y mínimas para la ubicación del usuario.">
-    <meta property="og:image" content="https://i.imgur.com/4ghT793.png">
+    <meta property="og:image" content="https://i.imgur.com/qPIAp3e.png">
     <meta property="og.type" content="non_profit">
     <meta name="twitter:description" content="El objetivo de esta app es mostrar el pronóstico del clima actual y las temperaturas máximas y mínimas para la ubicación del usuario.">
-    <meta name="twitter:image" content="https://i.imgur.com/4ghT793.png">
+    <meta name="twitter:image" content="https://i.imgur.com/qPIAp3e.png">
 
     <link rel="shortcut icon" href="{{ url_for('static', filename='favicon.ico') }}" />
     <link rel="stylesheet" href="{{ url_for('static', filename='css/styles.css') }}"/>
@@ -51,7 +51,6 @@
 
     <!-- Agrega aquí tus scripts JavaScript comunes -->
     <script>
-      // main.js
       $(document).ready(function () {
         // Obtener los elementos HTML
         var ciudadElement = $("#ciudad");
@@ -62,6 +61,16 @@
         var latitudElement = $("#latitud");
         var longitudElement = $("#longitud");
         var iconoElement = $("#icono");
+        
+        // Limpiando variables para cada consulta
+        ciudadElement.empty() 
+        descripcionElement.empty() 
+        temperaturaElement.empty() 
+        temperaturaMinElement.empty() 
+        temperaturaMaxElement.empty() 
+        latitudElement.empty() 
+        longitudElement.empty() 
+        iconoElement.empty() 
 
         // Obtener la ubicación actual del usuario
         function obtenerUbicacion() {
