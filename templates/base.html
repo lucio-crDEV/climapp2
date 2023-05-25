@@ -129,14 +129,14 @@
               // Actualizar los elementos HTML con la información del clima
               ciudadElement.text(response.ciudad);
               descripcionElement.text(response.descripcion);
-              temperaturaElement.text(response.temperatura);
-              temperaturaMinElement.text(response.temperatura_min);
-              temperaturaMaxElement.text(response.temperatura_max);
+              temperaturaElement.text(response.temperatura + '°C');
+              temperaturaMinElement.text(response.temperatura_min + '°C');
+              temperaturaMaxElement.text(response.temperatura_max + '°C');
               uvElement.text(response.uv_index_max);
               uvActualElement.text(response.uv_index_actual);
-              probLluviaElement.text(response.probabilidad_lluvia);
-              nubosidadElement.text(response.nubosidad);
-              humedadElement.text(response.humedad_relativa);
+              probLluviaElement.text(response.probabilidad_lluvia + '%');
+              nubosidadElement.text(response.nubosidad + '%');
+              humedadElement.text(response.humedad_relativa + '%');
 
               // Obtener el icono correspondiente al clima
               obtenerIconoClima(response.descripcion);
