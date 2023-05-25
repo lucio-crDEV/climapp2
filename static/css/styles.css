@@ -95,3 +95,10 @@ body{
         background-repeat: no-repeat;
     }
   }
+  @media screen and (max-height: 830px) {
+    body {
+        background: conic-gradient(at right top, rgb(251, 113, 133), rgb(217, 70, 239), rgb(99, 102, 241));
+        background-repeat: no-repeat;
+        height: calc(100vh + 120px);
+    }
+  }
