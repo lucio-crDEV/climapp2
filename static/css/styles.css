@@ -63,6 +63,15 @@ body{
     top: 1rem;
 }
 
+#mensaje-error{
+    padding: 1rem;
+    background: rgba( 104, 104, 104, 0.05 );
+    box-shadow: 0 8px 32px 0 rgba( 31, 38, 135, 0.37 );
+    backdrop-filter: blur( 14px );
+    -webkit-backdrop-filter: blur( 14px );
+    border-radius: 10px;
+}
+
 #svgError{
     margin: auto;
     height: 40px;
