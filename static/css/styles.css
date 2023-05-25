@@ -60,6 +60,7 @@ body{
 #pronostico{
     position: relative;
     right: 2rem;
+    top: 1rem;
 }
 
 #svgError{
