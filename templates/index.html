@@ -17,21 +17,51 @@
       </div>
       <div id="contenido-clima" style="display: none">
         <p>
-          El pronóstico para hoy en <strong><span id="ciudad"></span></strong>
+          El pronóstico para <strong><span id="ciudad"></span></strong> es
+          principalmente
         </p>
-        <p>es principalmente <span id="descripcion"></span>.</p>
-        <i id="icono" class="h1 fas"></i>
+        <p id="pronostico">
+          <span class="h1"
+            ><i id="icono" class="h1 fas"></i></span
+          >&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span
+            id="descripcion"
+            class="h5 pt-3 position-absolute translate-middle-y"
+          ></span>
+        </p>
         <br />
-        <p>La temperatura actual es de</p>
-        <p class="h3"><span id="temperatura"></span>°C</p>
+        <p>
+          La temperatura actual es de &nbsp;<span
+            class="h4"
+            id="temperatura"
+          ></span
+          >°C
+        </p>
+        <br>
+        <div class="container">
+          <div class="row">
+            <div class="col"><p class="light-font">La probabilidad de lluvia hoy es de <br><br><span class="h5" id="probLluvia"></span>%</p></div>
+            <div class="col"><p class="light-font">La nubosidad actual es de <br><br><span class="h5" id="nubosidad"></span>%</p></div>
+            <div class="col"><p class="light-font">La humedad actual es de <br><br><span class="h5" id="humedad"></span>%</p> </div>
+            <div class="col"><p class="light-font">
+              El indice UV actual es <br><br><span class="h5" id="uvActual"></span>
+            </p></div>
+          </div>
+        </div>
 
+
+        
         <hr />
         <p>Además esperamos:</p>
-        <p class="h6">Máximas de <span id="temp_max"></span>°C</p>
-        <p class="h6">Mínimas de <span id="temp_min"></span>°C</p>
+        <p class="h6">Una máxima de: <span id="temp_max"></span>°C</p>
+        <p class="h6">Una mínimas de: <span id="temp_min"></span>°C</p>
+        <p class="h6">Un índice UV de: <span id="uv_max"></span></p>
       </div>
-      
-      <div id="svgWrapper" class="mt-2 mb-4 text-center animate__animated animate__heartBeat animate__repeat-3" style="display: none;">
+
+      <div
+        id="svgWrapper"
+        class="mt-2 mb-4 text-center animate__animated animate__heartBeat animate__repeat-3"
+        style="display: none"
+      >
         <img
           class="animate__animated animate__heartBeat animate__repeat-2 animate__delay-4s"
           id="svgError"

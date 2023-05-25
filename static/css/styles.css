@@ -6,9 +6,17 @@
 
 body{
     background: conic-gradient(at right top, rgb(251, 113, 133), rgb(217, 70, 239), rgb(99, 102, 241));
-    height: 100vh;
-    overflow-y: hidden;
+    background-repeat: no-repeat;
     scroll-behavior: smooth;
+    height: calc(100vh - 25px);
+}
+
+::-webkit-scrollbar {
+    display: none; }
+
+.light-font{
+    font-size: .8rem;
+    font-weight: 100;
 }
 
 .titulo{
@@ -21,8 +29,31 @@ body{
     color: #eab3fa;
 }
 
+#pronostico{
+    position: relative;
+    right: 2rem;
+}
+
 #svgError{
     margin: auto;
     height: 40px;
     width: 40px;
 }
+
+/* Media queries para background */
+
+@media screen and (max-width: 450px) {
+    body {
+        background: conic-gradient(at right top, rgb(251, 113, 133), rgb(217, 70, 239), rgb(99, 102, 241));
+        height: 100%;
+        background-repeat: no-repeat;
+    }
+  }
+
+  @media screen and (max-height: 760px) {
+    body {
+        background: conic-gradient(at right top, rgb(251, 113, 133), rgb(217, 70, 239), rgb(99, 102, 241));
+        height: 100%;
+        background-repeat: no-repeat;
+    }
+  }

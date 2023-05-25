@@ -61,6 +61,11 @@
         var latitudElement = $("#latitud");
         var longitudElement = $("#longitud");
         var iconoElement = $("#icono");
+        var uvElement = $("#uv_max");
+        var uvActualElement = $("#uvActual");
+        var probLluviaElement = $("#probLluvia");
+        var nubosidadElement = $("#nubosidad");
+        var humedadElement = $("#humedad");
         
         // Limpiando variables para cada consulta
         ciudadElement.empty() 
@@ -71,6 +76,11 @@
         latitudElement.empty() 
         longitudElement.empty() 
         iconoElement.empty() 
+        uvElement.empty() 
+        uvActualElement.empty() 
+        probLluviaElement.empty() 
+        nubosidadElement.empty() 
+        humedadElement.empty() 
 
         // Obtener la ubicación actual del usuario
         function obtenerUbicacion() {
@@ -122,6 +132,11 @@
               temperaturaElement.text(response.temperatura);
               temperaturaMinElement.text(response.temperatura_min);
               temperaturaMaxElement.text(response.temperatura_max);
+              uvElement.text(response.uv_index_max);
+              uvActualElement.text(response.uv_index_actual);
+              probLluviaElement.text(response.probabilidad_lluvia);
+              nubosidadElement.text(response.nubosidad);
+              humedadElement.text(response.humedad_relativa);
 
               // Obtener el icono correspondiente al clima
               obtenerIconoClima(response.descripcion);
