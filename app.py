@@ -56,7 +56,7 @@ def obtener_clima():
     codigo_clima = data_clima['hourly']['weathercode'][0]
     descripcion = obtener_descripcion_clima(str(codigo_clima))
     humedad_relativa = data_clima['hourly']['relativehumidity_2m'][-1]
-    nubosidad = data_clima['hourly']['cloudcover'][-1]
+    nubosidad = data_clima['hourly']['cloudcover'][0]
     probabilidad_lluvia = data_clima['hourly']['precipitation_probability'][-1]
     temperatura = round(data_clima['current_weather']['temperature'])
     temperatura_min = round(data_clima['daily']['temperature_2m_min'][0]) 
