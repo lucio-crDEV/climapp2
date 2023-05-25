@@ -1,9 +1,9 @@
 <!-- index.html -->
 {% extends 'base.html' %} {% block content %}
 <div class="container-fluid">
-  <div class="card text-white bg-dark text-center mb-3">
+  <div class="glassmorfismo text-center mb-3">
     <div class="card-header">
-      <h2>Información del clima</h2>
+      <h1>Información del clima</h1>
     </div>
     <div class="card-body">
       <div class="cargando">
@@ -16,10 +16,7 @@
         </div>
       </div>
       <div id="contenido-clima" style="display: none">
-        <p>
-          El pronóstico para <strong><span id="ciudad"></span></strong> es
-          principalmente
-        </p>
+        <p class="h4">El pronóstico de <strong><span id="ciudad"></span></strong> para hoy es</p>
         <p id="pronostico">
           <span class="h1"
             ><i id="icono" class="h1 fas"></i></span
@@ -38,11 +35,11 @@
         </p>
         <br>
         <div class="container">
-          <div class="row">
-            <div class="col"><p class="light-font">La probabilidad de lluvia hoy es de <br><br><span class="h5" id="probLluvia"></span>%</p></div>
-            <div class="col"><p class="light-font">La nubosidad actual es de <br><br><span class="h5" id="nubosidad"></span>%</p></div>
-            <div class="col"><p class="light-font">La humedad actual es de <br><br><span class="h5" id="humedad"></span>%</p> </div>
-            <div class="col"><p class="light-font">
+          <div class="row position-relative">
+            <div class="col"><p class="light-font position-relative translate-middle-y">Probabilidad de lluvia <br><br><span class="h5" id="probLluvia"></span>%</p></div>
+            <div class="col"><p class="light-font position-relative translate-middle-y">La nubosidad actual es de <br><br><span class="h5" id="nubosidad"></span>%</p></div>
+            <div class="col"><p class="light-font position-relative translate-middle-y">La humedad actual es de <br><br><span class="h5" id="humedad"></span>%</p> </div>
+            <div class="col"><p class="light-font position-relative translate-middle-y">
               El indice UV actual es <br><br><span class="h5" id="uvActual"></span>
             </p></div>
           </div>
@@ -51,10 +48,28 @@
 
         
         <hr />
-        <p>Además esperamos:</p>
-        <p class="h6">Una máxima de: <span id="temp_max"></span>°C</p>
-        <p class="h6">Una mínimas de: <span id="temp_min"></span>°C</p>
-        <p class="h6">Un índice UV de: <span id="uv_max"></span></p>
+
+        <div class="container mt-4">
+          <p class="h4">Además esperamos:</p>
+          <br>
+          <div class="row px-5">
+            <div class="col">
+              <p class="light-font2"class="light-font">Una máxima de: <br><span class="h5 pt-5" id="temp_max"></span>°C</p>
+            </div>
+            <div class="col">
+              <p class="light-font2">Una mínimas de: <br><span class="h5 pt-5" id="temp_min"></span>°C</p>
+            </div>
+            
+          </div>
+          <div class="row px-5">
+            <div class="col">
+              <p class="light-font2">Un índice UV máximo de: <br><span class="h5 pt-5" id="uv_max"></span></p>
+            </div>
+          </div>
+        </div>
+
+
+
       </div>
 
       <div
