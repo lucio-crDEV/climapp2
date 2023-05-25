@@ -49,21 +49,33 @@ def obtener_clima():
     data_geocodificacion = response_geocodificacion.json()
     ciudad = data_geocodificacion['address']['city']
 
-    url_clima = f"https://api.open-meteo.com/v1/forecast?latitude=-33.014&longitude=-71.551&hourly=temperature_2m,relativehumidity_2m,apparent_temperature,precipitation_probability,rain,showers,weathercode,visibility,shortwave_radiation,direct_radiation&daily=weathercode,temperature_2m_max,temperature_2m_min,sunrise,sunset&current_weather=true&forecast_days=1&timezone=auto"
+    url_clima = f"https://api.open-meteo.com/v1/forecast?latitude={latitud}&longitude={longitud}&hourly=temperature_2m,relativehumidity_2m,apparent_temperature,precipitation_probability,weathercode,cloudcover,cloudcover_low,cloudcover_mid,cloudcover_high,visibility,uv_index&daily=weathercode,temperature_2m_max,temperature_2m_min,sunrise,sunset,uv_index_max,precipitation_hours,precipitation_probability_max&current_weather=true&timeformat=unixtime&forecast_days=3&timezone=America%2FNew_York"
     response_clima = requests.get(url_clima)
     data_clima = response_clima.json()
+
     codigo_clima = data_clima['hourly']['weathercode'][0]
     descripcion = obtener_descripcion_clima(str(codigo_clima))
-    temperatura = data_clima['current_weather']['temperature']
-    temperatura_min = data_clima['daily']['temperature_2m_min'][0]
-    temperatura_max = data_clima['daily']['temperature_2m_max'][0]
+    humedad_relativa = data_clima['hourly']['relativehumidity_2m'][-1]
+    nubosidad = data_clima['hourly']['cloudcover'][-1]
+    probabilidad_lluvia = data_clima['hourly']['precipitation_probability'][-1]
+    temperatura = round(data_clima['current_weather']['temperature'])
+    temperatura_min = round(data_clima['daily']['temperature_2m_min'][0]) 
+    temperatura_max = round(data_clima['daily']['temperature_2m_max'][0]) 
+    uv_index_max = data_clima['daily']['uv_index_max'][0]
+    uv_index_actual = data_clima['hourly']['uv_index'][-1]
 
     clima = {
         'ciudad': ciudad,
         'descripcion': descripcion,
+        'humedad_relativa': humedad_relativa,
+        'nubosidad': nubosidad,
+        'probabilidad_lluvia': probabilidad_lluvia,
         'temperatura': temperatura,
         'temperatura_min': temperatura_min,
-        'temperatura_max': temperatura_max
+        'temperatura_max': temperatura_max,
+        'uv_index_max': uv_index_max,
+        'uv_index_actual': uv_index_actual,
+
     }
 
     return jsonify(clima)
