@@ -49,20 +49,21 @@ def obtener_clima():
     data_geocodificacion = response_geocodificacion.json()
     ciudad = data_geocodificacion['address']['city']
 
-    url_clima = f"https://api.open-meteo.com/v1/forecast?latitude={latitud}&longitude={longitud}&hourly=temperature_2m,relativehumidity_2m,apparent_temperature,precipitation_probability,weathercode,cloudcover,cloudcover_low,cloudcover_mid,cloudcover_high,visibility,uv_index&daily=weathercode,temperature_2m_max,temperature_2m_min,sunrise,sunset,uv_index_max,precipitation_hours,precipitation_probability_max&current_weather=true&timeformat=unixtime&forecast_days=3&timezone=America%2FNew_York"
+    url_clima = f"https://api.open-meteo.com/v1/forecast?latitude={latitud}&longitude={longitud}&hourly=temperature_2m,relativehumidity_2m,precipitation_probability,weathercode,cloudcover,uv_index&daily=temperature_2m_max,temperature_2m_min,uv_index_max,precipitation_probability_max&current_weather=true&timezone=America%2FNew_York"
+
     response_clima = requests.get(url_clima)
     data_clima = response_clima.json()
 
     codigo_clima = data_clima['hourly']['weathercode'][0]
     descripcion = obtener_descripcion_clima(str(codigo_clima))
-    humedad_relativa = data_clima['hourly']['relativehumidity_2m'][-1]
+    humedad_relativa = data_clima['hourly']['relativehumidity_2m'][0]
     nubosidad = data_clima['hourly']['cloudcover'][0]
-    probabilidad_lluvia = data_clima['hourly']['precipitation_probability'][-1]
+    probabilidad_lluvia = data_clima['daily']['precipitation_probability_max'][0]
     temperatura = round(data_clima['current_weather']['temperature'])
-    temperatura_min = round(data_clima['daily']['temperature_2m_min'][0]) 
-    temperatura_max = round(data_clima['daily']['temperature_2m_max'][0]) 
+    temperatura_min = data_clima['daily']['temperature_2m_min'][0]
+    temperatura_max = data_clima['daily']['temperature_2m_max'][0]
     uv_index_max = data_clima['daily']['uv_index_max'][0]
-    uv_index_actual = data_clima['hourly']['uv_index'][-1]
+    uv_index_actual = data_clima['hourly']['uv_index'][0]
 
     clima = {
         'ciudad': ciudad,
