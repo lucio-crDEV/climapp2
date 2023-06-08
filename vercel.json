@@ -11,5 +11,10 @@
             "src": "/(.*)",
             "dest": "/app.py"
         }
-    ]
+    ],
+    "projectSettings": {
+        "projectId": "prj_LB0kAD1FiZehg7V581Fx3yVsAfwt",
+        "name": "climapp2",
+        "framework": "flask"
+    }
 }
