@@ -149,3 +149,4 @@ pyvenv.cfg
 
 # End of https://mrkandreev.name/snippets/gitignore-generator/#Flask,Python
 lib64
+.vercel
