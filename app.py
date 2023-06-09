@@ -4,6 +4,7 @@ import requests
 
 app = Flask(__name__)
 
+
 def obtener_descripcion_clima(clima_actual):
     descripcion_clima = {
         '0': 'Despejado',
@@ -39,6 +40,7 @@ def obtener_descripcion_clima(clima_actual):
 def index():
     return render_template('index.html')
 
+
 @app.route('/obtener_clima', methods=['POST'])
 def obtener_clima():
     latitud = request.json['latitude']
@@ -49,7 +51,7 @@ def obtener_clima():
     data_geocodificacion = response_geocodificacion.json()
     ciudad = data_geocodificacion['address']['city']
 
-    url_clima = f"https://api.open-meteo.com/v1/forecast?latitude={latitud}&longitude={longitud}&hourly=temperature_2m,relativehumidity_2m,precipitation_probability,weathercode,cloudcover,uv_index&daily=temperature_2m_max,temperature_2m_min,uv_index_max,precipitation_probability_max&current_weather=true&timezone=America%2FNew_York"
+    url_clima = f"https://api.open-meteo.com/v1/forecast?latitude={latitud}&longitude={longitud}&hourly=temperature_2m,relativehumidity_2m,precipitation_probability,weathercode,cloudcover,uv_index&daily=weathercode,temperature_2m_max,temperature_2m_min,uv_index_max,precipitation_probability_max&current_weather=true&timezone=America%2FNew_York"
 
     response_clima = requests.get(url_clima)
     data_clima = response_clima.json()
@@ -65,6 +67,14 @@ def obtener_clima():
     uv_index_max = data_clima['daily']['uv_index_max'][0]
     uv_index_actual = data_clima['hourly']['uv_index'][0]
 
+    # pronostico dia siguiente
+    codigo_clima2 = data_clima['daily']['weathercode'][1]
+    descripcion2 = obtener_descripcion_clima(str(codigo_clima))
+    probabilidad_lluvia2 = data_clima['daily']['precipitation_probability_max'][1]
+    temperatura_min2 = round(data_clima['daily']['temperature_2m_min'][1])
+    temperatura_max2 = round(data_clima['daily']['temperature_2m_max'][1]) 
+    uv_index_max2 = data_clima['daily']['uv_index_max'][1]
+
     clima = {
         'ciudad': ciudad,
         'descripcion': descripcion,
@@ -76,10 +86,17 @@ def obtener_clima():
         'temperatura_max': temperatura_max,
         'uv_index_max': uv_index_max,
         'uv_index_actual': uv_index_actual,
+        'codigo_clima2': codigo_clima2,
+        'descripcion2': descripcion2,
+        'probabilidad_lluvia2': probabilidad_lluvia2,
+        'temperatura_min2': temperatura_min2,
+        'temperatura_max2': temperatura_max2,
+        'uv_index_max2': uv_index_max2,
 
     }
 
     return jsonify(clima)
+
 
 if __name__ == '__main__':
     app.run(debug=True)

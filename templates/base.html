@@ -7,30 +7,75 @@
     <!-- no cache -->
     <meta http-equiv="Cache-control" content="no-cache" />
 
-    <meta name="description" content="El objetivo de esta app es mostrar el pronóstico del clima actual y las temperaturas máximas y mínimas para la ubicación del usuario.">
-    <meta property="og:description" content="El objetivo de esta app es mostrar el pronóstico del clima actual y las temperaturas máximas y mínimas para la ubicación del usuario.">
-    <meta property="og:image" content="https://i.imgur.com/fD1aBkH.png">
-    <meta property="og.type" content="non_profit">
-    <meta name="twitter:description" content="El objetivo de esta app es mostrar el pronóstico del clima actual y las temperaturas máximas y mínimas para la ubicación del usuario.">
-    <meta name="twitter:image" content="https://i.imgur.com/fD1aBkH.png">
+    <meta
+      name="description"
+      content="El objetivo de esta app es mostrar el pronóstico del clima actual y las temperaturas máximas y mínimas para la ubicación del usuario."
+    />
+    <meta
+      property="og:description"
+      content="El objetivo de esta app es mostrar el pronóstico del clima actual y las temperaturas máximas y mínimas para la ubicación del usuario."
+    />
+    <meta property="og:image" content="https://i.imgur.com/fD1aBkH.png" />
+    <meta property="og.type" content="non_profit" />
+    <meta
+      name="twitter:description"
+      content="El objetivo de esta app es mostrar el pronóstico del clima actual y las temperaturas máximas y mínimas para la ubicación del usuario."
+    />
+    <meta name="twitter:image" content="https://i.imgur.com/fD1aBkH.png" />
 
-    <link rel="shortcut icon" href="{{ url_for('static', filename='favicon.ico') }}" />
-    <link rel="stylesheet" href="{{ url_for('static', filename='css/styles.css') }}"/>
+    <link
+      rel="shortcut icon"
+      href="{{ url_for('static', filename='favicon.ico') }}"
+    />
+    <link
+      rel="stylesheet"
+      href="{{ url_for('static', filename='css/styles.css') }}"
+    />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Climapp</title>
     <!-- Bootstrap css -->
-    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.3.1/dist/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous"/>
+    <link
+      rel="stylesheet"
+      href="https://cdn.jsdelivr.net/npm/bootstrap@4.3.1/dist/css/bootstrap.min.css"
+      integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T"
+      crossorigin="anonymous"
+    />
     <!-- jQuery -->
-    <script src="https://code.jquery.com/jquery-3.7.0.js" integrity="sha256-JlqSTELeR4TLqP0OG9dxM7yDPqX1ox/HfgiSLBj8+kM=" crossorigin="anonymous"></script>
+    <script
+      src="https://code.jquery.com/jquery-3.7.0.js"
+      integrity="sha256-JlqSTELeR4TLqP0OG9dxM7yDPqX1ox/HfgiSLBj8+kM="
+      crossorigin="anonymous"
+    ></script>
     <!-- fonts -->
     <link rel="preconnect" href="https://fonts.googleapis.com" />
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@100;300;400;600;700;800&family=Sora:wght@400;600;700&display=swap" rel="stylesheet" />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Montserrat:wght@100;300;400;600;700;800&family=Sora:wght@400;600;700&display=swap"
+      rel="stylesheet"
+    />
     <!-- Animate css -->
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/4.1.1/animate.min.css" />
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/4.1.1/animate.min.css"
+    />
 
     <!-- Font Awesome -->
-    <script src="https://kit.fontawesome.com/61042a5f3b.js" crossorigin="anonymous" ></script>
+    <script
+      src="https://kit.fontawesome.com/61042a5f3b.js"
+      crossorigin="anonymous"
+    ></script>
+    <!-- Owl Carousel CSS -->
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/OwlCarousel2/2.3.4/assets/owl.carousel.min.css"
+    />
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/OwlCarousel2/2.3.4/assets/owl.theme.default.min.css"
+    />
+
+    <!-- Owl Carousel JS -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/OwlCarousel2/2.3.4/owl.carousel.min.js"></script>
   </head>
 
   <body class="container bg-dark">
@@ -53,7 +98,7 @@
     <script>
       $(document).ready(function () {
         // Obtener los elementos HTML
-        var ciudadElement = $("#ciudad");
+        var ciudadElement = $(".ciudad");
         var descripcionElement = $("#descripcion");
         var temperaturaElement = $("#temperatura");
         var temperaturaMinElement = $("#temp_min");
@@ -66,21 +111,33 @@
         var probLluviaElement = $("#probLluvia");
         var nubosidadElement = $("#nubosidad");
         var humedadElement = $("#humedad");
-        
+        var codigo_clima2Element = $("#codigo_clima2");
+        var descripcion2Element = $("#descripcion2");
+        var probabilidad_lluvia2Element = $("#probabilidad_lluvia2");
+        var temperatura_min2Element = $("#temperatura_min2");
+        var temperatura_max2Element = $("#temperatura_max2");
+        var uv_index_max2Element = $("#uv_index_max2");
+
         // Limpiando variables para cada consulta
-        ciudadElement.empty() 
-        descripcionElement.empty() 
-        temperaturaElement.empty() 
-        temperaturaMinElement.empty() 
-        temperaturaMaxElement.empty() 
-        latitudElement.empty() 
-        longitudElement.empty() 
-        iconoElement.empty() 
-        uvElement.empty() 
-        uvActualElement.empty() 
-        probLluviaElement.empty() 
-        nubosidadElement.empty() 
-        humedadElement.empty() 
+        ciudadElement.empty();
+        descripcionElement.empty();
+        temperaturaElement.empty();
+        temperaturaMinElement.empty();
+        temperaturaMaxElement.empty();
+        latitudElement.empty();
+        longitudElement.empty();
+        iconoElement.empty();
+        uvElement.empty();
+        uvActualElement.empty();
+        probLluviaElement.empty();
+        nubosidadElement.empty();
+        humedadElement.empty();
+        codigo_clima2Element.empty();
+        descripcion2Element.empty();
+        probabilidad_lluvia2Element.empty();
+        temperatura_min2Element.empty();
+        temperatura_max2Element.empty();
+        uv_index_max2Element.empty();
 
         // Obtener la ubicación actual del usuario
         function obtenerUbicacion() {
@@ -129,21 +186,29 @@
               // Actualizar los elementos HTML con la información del clima
               ciudadElement.text(response.ciudad);
               descripcionElement.text(response.descripcion);
-              temperaturaElement.text(response.temperatura + '°C');
-              temperaturaMinElement.text(response.temperatura_min + '°C');
-              temperaturaMaxElement.text(response.temperatura_max + '°C');
+              temperaturaElement.text(response.temperatura + "°C");
+              temperaturaMinElement.text(response.temperatura_min + "°C");
+              temperaturaMaxElement.text(response.temperatura_max + "°C");
               uvElement.text(response.uv_index_max);
               uvActualElement.text(response.uv_index_actual);
-              probLluviaElement.text(response.probabilidad_lluvia + '%');
-              nubosidadElement.text(response.nubosidad + '%');
-              humedadElement.text(response.humedad_relativa + '%');
+              probLluviaElement.text(response.probabilidad_lluvia + "%");
+              nubosidadElement.text(response.nubosidad + "%");
+              humedadElement.text(response.humedad_relativa + "%");
+              codigo_clima2Element.text(response.codigo_clima2);
+              descripcion2Element.text(response.descripcion2);
+              probabilidad_lluvia2Element.text(response.probabilidad_lluvia2 + "%");
+              temperatura_min2Element.text(response.temperatura_min2);
+              temperatura_max2Element.text(response.temperatura_max2);
+              uv_index_max2Element.text(response.uv_index_max2);
 
               // Obtener el icono correspondiente al clima
               obtenerIconoClima(response.descripcion);
+              obtenerIconoClima(response.descripcion2);
 
               // Mostrar el contenido del clima
               $(".cargando").hide();
-              $("#contenido-clima").show();
+              $(".contenido-clima").show();
+              $("#carousel").show()
             },
             error: function (error) {
               // Manejar los errores de la solicitud
@@ -211,8 +276,29 @@
           iconoElement.attr("class", "fas " + icono);
         }
 
+       
         // Obtener la ubicación y el clima al cargar la página
         obtenerUbicacion();
+
+
+         // Inicializar el carrusel
+         $("#carousel").owlCarousel({
+          loop: false,
+          margin: 50,
+          nav: true,
+          dots: false,
+          responsive: {
+            0: {
+              items: 1,
+            },
+            600: {
+              items: 1,
+            },
+            1000: {
+              items: 1,
+            },
+          },
+        });
       });
     </script>
   </body>
