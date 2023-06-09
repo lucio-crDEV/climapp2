@@ -1,7 +1,8 @@
 # Proyecto de Información del Clima
 
-Este proyecto proporciona una aplicación web para obtener información del clima de una ubicación específica.
-#### Online: https://clima2day.herokuapp.com/
+Este proyecto proporciona una aplicación web para obtener información del clima de una ubicación específica solo a partir de la ip del usuario.
+Se le consultara si desea compartir la ubicación, este permiso es necesario, ya que solo así se podrán obtener datos útiles para ud.
+#### Online: [https://climaqui.vercel.app/](https://climaqui.vercel.app/)
 
 ## Descripción
 
