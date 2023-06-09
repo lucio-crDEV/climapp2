@@ -105,7 +105,7 @@ body{
 
 /* Media queries para background */
 
-  @media screen and (max-width: 400px) {
+  @media screen and (max-width: 420px) {
     body {
         background: conic-gradient(at right top, rgb(251, 113, 133), rgb(217, 70, 239), rgb(99, 102, 241));
         height: calc(100% + 1000px);
@@ -119,14 +119,14 @@ body{
     .owl-prev {
         position: absolute;
         top: 50%;
-        right: 20rem !important;
+        right: 19rem !important;
         outline: none;
     }
     
     .owl-next{
         position: absolute;
         top: 50%;
-        left: 20rem !important;
+        left: 19rem !important;
         outline: none;
     }
     
