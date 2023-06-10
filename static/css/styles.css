@@ -24,7 +24,7 @@ body{
     -webkit-backdrop-filter: blur( 14.5px );
     border-radius: 10px;
     padding: 1rem;
-    height: 7rem;
+    height: 8rem;
 }
 
 .light-font2{
@@ -75,8 +75,6 @@ body{
 .owl-next:focus, .owl-prev:focus {
     outline: none;
 }
-
-
 
 .footer{
     font-weight: 100;

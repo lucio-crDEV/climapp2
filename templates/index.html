@@ -4,65 +4,109 @@
   <div id="carousel" class="owl-carousel" style="display: none;">
     <div class="item">
       <!-- Card del clima -->
-      <div class="glassmorfismo text-center mb-3 mx-auto">
-        <div class="card-body">
-          <div class=" cargando">
-          <div class="spinner-grow mb-4" style="width: 3rem; height: 3rem" role="status"><span
-              class="sr-only">Loading...</span></div>
-        </div>
-        <div class="contenido-clima" style="display: none">
-          <div id="pronostico" class="card-header">
-            <h3>El pronóstico para <strong><span id="ciudad"></span></strong> hoy es</h3>
-
-            <p class="h4"> </p>
-            <span class="h1"><i id="icono" class="h1 fas"></i></span>
-            &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-            <span id="descripcion" class="h5 pt-3 position-absolute translate-middle-y"></span></p>
-            <br />
-            <p> La temperatura actual es de &nbsp;<span class="h4" id="temperatura"></span></p>
-            <br />
-            <div class="container">
-              <div class="row position-relative">
-
-                <div class="col">
-                  <p class="light-font  position-relative translate-middle-y">Nubosidad actual<br /><br /><span
-                      class="h5" id="nubosidad"></span>
-                  </p>
-                </div>
-                <div class="col">
-                  <p class="light-font position-relative translate-middle-y">Nivel de humedad<br /><br /><span
-                      class="h5" id="humedad"></span></p>
-                </div>
-                <div class="col">
-                  <p class="light-font position-relative translate-middle-y">Índice UV actual<br /><br /><span
-                      class="h5" id="uvActual"></span>
-                  </p>
-                </div>
-              </div>
+      <div class="text-center mb-4 mx-auto">
+        <div class="glassmorfismo card-body">
+          <div class="cargando">
+            <div
+              class="spinner-grow mb-4"
+              style="width: 3rem; height: 3rem;"
+              role="status"
+            >
+              <span class="sr-only">Loading...</span>
             </div>
+          </div>
+          <div class="contenido-clima" style="display: none;">
+            <div id="pronostico" class="card-header">
+              <h3>
+                El pronóstico para
+                <strong><span id="ciudad"></span></strong> hoy es
+              </h3>
 
-            <hr />
-
-            <div class="container mt-4">
-              <p class="h4">Además esperamos:</p>
+              <p class="h4"></p>
+              <span class="h1"><i id="icono" class="h1 fas"></i></span>
               <br />
-              <div class="row px-5">
-                <div class="col">
-                  <p class="light-font">
-                    Una temperatura máxima de<br /><br /><span class="h5 pt-5" id="temp_max"></span>
-                  </p>
+              <p id="descripcion" class="h5 pt-3 text-center"></p>
+              <br />
+              <p>
+                La temperatura actual es de &nbsp;<span
+                  class="h4"
+                  id="temperatura"
+                ></span>
+              </p>
+              <br />
+              <div class="container">
+                <div class="row">
+                  <div class="col col-md-8 col-sm-6 mx-auto">
+                    <p class="light-font position-relative translate-middle-y">
+                      Probabilidad de lluvia<br /><br /><span
+                        class="h5"
+                        id="probLluvia"
+                      ></span>
+                    </p>
+                  </div>
                 </div>
-                <div class="col">
-                  <p class="light-font">
-                    Una temperatura mínima de<br /><br /><span class="h5 pt-5" id="temp_min"></span>
-                  </p>
+                <div class="row">
+                  <div class="col col-md-8 col-sm-6 mx-auto">
+                    <p class="light-font position-relative translate-middle-y">
+                      Nubosidad actual<br /><br /><span
+                        class="h5"
+                        id="nubosidad"
+                      ></span>
+                    </p>
+                  </div>
+                </div>
+                <div class="row">
+                  <div class="col col-md-6 col-sm-6 mx-auto">
+                    <p class="light-font position-relative translate-middle-y">
+                      Índice UV<br /><br /><span
+                        class="h5"
+                        id="uvActual"
+                      ></span>
+                    </p>
+                  </div>
+                  <div class="col col-md-6 col-sm-6">
+                    <p class="light-font position-relative translate-middle-y">
+                      Nivel de humedad<br /><br /><span
+                        class="h5"
+                        id="humedad"
+                      ></span>
+                    </p>
+                  </div>
                 </div>
               </div>
-              <div class="row px-5">
-                <div class="col">
-                  <p class="light-font">
-                    Índice UV máximo para el día<br /><br /><span class="h6 pt-5" id="uv_max"></span>
-                  </p>
+
+              <hr />
+
+              <div class="container mt-4">
+                <p class="h4">Además esperamos:</p>
+                <br />
+                <div class="row justify-content-center">
+                  <div class="col-6">
+                    <p class="light-font">
+                      T° máxima:<br /><br /><span
+                        class="h5 pt-5"
+                        id="temp_max"
+                      ></span>
+                    </p>
+                  </div>
+                  <div class="col-6">
+                    <p class="light-font">
+                      T° mínima:<br /><br /><span
+                        class="h5 pt-5"
+                        id="temp_min"
+                      ></span>
+                    </p>
+                  </div>
+                </div>
+                <div class="row">
+                  <div class="col-6 mx-auto">
+                    <p class="light-font">
+                      Índice UV máximo<br /><br /><span
+                        class="h5 pt-5"
+                        id="uv_max"
+                      ></span>
+                    </p>
+                  </div>
                 </div>
               </div>
             </div>
@@ -70,49 +114,68 @@
         </div>
       </div>
     </div>
-  </div>
-  <!-- Card "HOLA" -->
-  <div class="item">
-    <div class="glassmorfismo text-center mb-3">
-      <!-- Contenido de la card "HOLA" -->
-      <div class="card-body">
-        <div class="cargando">
-          <div class="spinner-grow mb-4" style="width: 3rem; height: 3rem" role="status"><span
-              class="sr-only">Loading...</span></div>
-        </div>
-        <div class="contenido-clima" style="display: none;">
-          <div id="pronostico" class="card-header">
-            <h3 class="mb-4"><strong class="ciudad"></strong> mañana estará: </h3>
-            <p class="h4"> </p>
-            <span class="h1"><i id="icono2" class="h1 fas"></i></span>
-            &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-            <span id="descripcion2" class="h5 pt-3 position-absolute translate-middle-y"></span></p>
-            <div class="container">
-              <div class="row position-relative">
-                <div class="col">
-                  <p class="light-font position-relative translate-middle-y">Probabilidad de lluvia <br /><br /><span
-                      class="h5" id="probabilidad_lluvia2"></span></p>
+    <!-- Segunda Card-->
+    <div class="item">
+      <div class="glassmorfismo text-center mb-3">
+        <div class="card-body">
+          <div class="cargando">
+            <div
+              class="spinner-grow mb-4"
+              style="width: 3rem; height: 3rem;"
+              role="status"
+            >
+              <span class="sr-only">Loading...</span>
+            </div>
+          </div>
+          <div class="contenido-clima" style="display: none;">
+            <div id="pronostico" class="card-header">
+              <h3 class="mb-4">
+                <strong class="ciudad"></strong> mañana estará:
+              </h3>
+              <p class="h4"></p>
+              <span class="h1"><i id="icono2" class="h1 fas"></i></span>
+              &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+              <br />
+              <p id="descripcion2" class="h5 pt-3 text-center"></p>
+              <div class="container mt-5">
+                <div class="row position-relative">
+                  <div class="col">
+                    <p class="light-font position-relative translate-middle-y">
+                      Probabilidad de lluvia <br /><br />
+                      <span class="h5" id="probabilidad_lluvia2"></span>
+                    </p>
+                  </div>
+                  <div class="col">
+                    <p class="light-font position-relative translate-middle-y">
+                      T° máxima:
+                      <br /><br />
+                      <span
+                        class="h5 pt-5 position-relative translate-middle-y"
+                        id="temperatura_max2"
+                      ></span>
+                    </p>
+                  </div>
+                  <div class="col">
+                    <p class="light-font position-relative translate-middle-y">
+                      T° mínima:<br /><br /><span
+                        class="h5 pt-5 position-relative translate-middle-y"
+                        id="temperatura_min2"
+                      ></span>
+                    </p>
+                  </div>
                 </div>
-                <div class="col">
-                  <p class="light-font position-relative translate-middle-y">
-                    Una temperatura máxima de<br /><br /><span class="h5 pt-5 position-relative translate-middle-y" id="temperatura_max2"></span>
-                  </p>
-                </div>
-                <div class="col">
-                  <p class="light-font position-relative translate-middle-y">
-                    Una temperatura mínima de<br /><br /><span class="h5 pt-5 position-relative translate-middle-y" id="temperatura_min2"></span>
-                  </p>
-                </div>
-              </div>
-              <div class="row px-5">
-                <div class="col">
-                  <p class="light-font position-relative translate-middle-y">
-                    Índice UV máximo para el día<br /><br /><span class="h6 pt-5 position-relative translate-middle-y" id="uv_index_max2"></span>
-                  </p>
+                <div class="row px-5">
+                  <div class="col mx-auto mt-4">
+                    <p class="light-font position-relative translate-middle-y">
+                      Índice UV máximo para el día<br /><br /><span
+                        class="h6 pt-5 position-relative translate-middle-y"
+                        id="uv_index_max2"
+                      ></span>
+                    </p>
+                  </div>
                 </div>
               </div>
             </div>
-
           </div>
         </div>
       </div>
@@ -120,27 +183,45 @@
   </div>
 </div>
 <div class="glassmorfismo text-center mb-3">
-  <div id="svgWrapper" class="mt-2 mb-4 text-center animate__animated animate__heartBeat animate__repeat-3"
-    style="display: none">
-    <img class="animate__animated animate__heartBeat animate__repeat-2 animate__delay-4s" id="svgError"
-      src="{{ url_for('static', filename='svg/error.svg') }}" alt="Geo error" />
+  <div
+    id="svgWrapper"
+    class="mt-2 mb-4 text-center animate__animated animate__heartBeat animate__repeat-3"
+    style="display: none;"
+  >
+    <img
+      class="animate__animated animate__heartBeat animate__repeat-2 animate__delay-4s"
+      id="svgError"
+      src="{{ url_for('static', filename='svg/error.svg') }}"
+      alt="Geo error"
+    />
   </div>
 
-  <div id="mensaje-error" style="display: none" class="text-left ml-4">
+  <div id="mensaje-error" style="display: none;" class="text-left ml-4">
     <p class="text-warning">⚠️ No se pudo obtener la información del clima.</p>
     <p id="autoriza" class="text-danger d-none">
-      ⛔ Debes autorizar el acceso a tu ubicación. Si no sabes cómo te dejo el siguiente
-      <a class="text-primary" target="_blank"
-        href="https://support.google.com/chrome/answer/142065?hl=Es-419&ref_topic=7439541" style="cursor: pointer">Link
+      ⛔ Debes autorizar el acceso a tu ubicación. Si no sabes cómo te dejo el
+      siguiente
+      <a
+        class="text-primary"
+        target="_blank"
+        href="https://support.google.com/chrome/answer/142065?hl=Es-419&ref_topic=7439541"
+        style="cursor: pointer;"
+        >Link
       </a>
     </p>
-    <p class="text-success d-none authOk"> ✅ Si ya autorizaste los permisos de ubicación puedes recargar la página para
-      obtener tus resultados </p>
+    <p class="text-success d-none authOk">
+      ✅ Si ya autorizaste los permisos de ubicación puedes recargar la página
+      para obtener tus resultados
+    </p>
     <div class="text-center mt-4">
-      <button class="btn btn-primary d-none authOk" onclick="window.location.reload(true);">Recargar</button>
+      <button
+        class="btn btn-primary d-none authOk"
+        onclick="window.location.reload(true);"
+      >
+        Recargar
+      </button>
     </div>
   </div>
-</div>
 </div>
 
 <script>

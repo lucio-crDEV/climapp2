@@ -56,11 +56,11 @@ def obtener_clima():
     response_clima = requests.get(url_clima)
     data_clima = response_clima.json()
 
-    codigo_clima = data_clima['hourly']['weathercode'][0]
+    codigo_clima = data_clima['current_weather']['weathercode']
     descripcion = obtener_descripcion_clima(str(codigo_clima))
     humedad_relativa = data_clima['hourly']['relativehumidity_2m'][0]
     nubosidad = data_clima['hourly']['cloudcover'][0]
-    probabilidad_lluvia = data_clima['daily']['precipitation_probability_max'][0]
+    probabilidad_lluvia = data_clima['hourly']['precipitation_probability'][0]
     temperatura = round(data_clima['current_weather']['temperature'])
     temperatura_min = data_clima['daily']['temperature_2m_min'][0]
     temperatura_max = data_clima['daily']['temperature_2m_max'][0]
@@ -71,8 +71,8 @@ def obtener_clima():
     codigo_clima2 = data_clima['daily']['weathercode'][1]
     descripcion2 = obtener_descripcion_clima(str(codigo_clima))
     probabilidad_lluvia2 = data_clima['daily']['precipitation_probability_max'][1]
-    temperatura_min2 = round(data_clima['daily']['temperature_2m_min'][1])
-    temperatura_max2 = round(data_clima['daily']['temperature_2m_max'][1]) 
+    temperatura_min2 = data_clima['daily']['temperature_2m_min'][1]
+    temperatura_max2 = data_clima['daily']['temperature_2m_max'][1]
     uv_index_max2 = data_clima['daily']['uv_index_max'][1]
 
     clima = {
@@ -92,7 +92,6 @@ def obtener_clima():
         'temperatura_min2': temperatura_min2,
         'temperatura_max2': temperatura_max2,
         'uv_index_max2': uv_index_max2,
-
     }
 
     return jsonify(clima)
