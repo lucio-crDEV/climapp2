@@ -61,7 +61,7 @@ def obtener_clima():
     humedad_relativa = data_clima['hourly']['relativehumidity_2m'][0]
     nubosidad = data_clima['hourly']['cloudcover'][0]
     probabilidad_lluvia = data_clima['hourly']['precipitation_probability'][0]
-    temperatura = round(data_clima['current_weather']['temperature'])
+    temperatura =data_clima['current_weather']['temperature']
     temperatura_min = data_clima['daily']['temperature_2m_min'][0]
     temperatura_max = data_clima['daily']['temperature_2m_max'][0]
     uv_index_max = data_clima['daily']['uv_index_max'][0]
