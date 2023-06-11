@@ -4,7 +4,7 @@ import requests
 
 app = Flask(__name__)
 
-
+# Función para obtener la descripción del clima según el código
 def obtener_descripcion_clima(clima_actual):
     descripcion_clima = {
         '0': 'Despejado',
@@ -35,46 +35,47 @@ def obtener_descripcion_clima(clima_actual):
     }
     return descripcion_clima.get(clima_actual, 'Desconocido')
 
-
 @app.route('/')
 def index():
     return render_template('index.html')
-
 
 @app.route('/obtener_clima', methods=['POST'])
 def obtener_clima():
     latitud = request.json['latitude']
     longitud = request.json['longitude']
 
+    # Obtener información de geocodificación de las coordenadas
     url_geocodificacion = f"https://nominatim.openstreetmap.org/reverse?format=json&lat={latitud}&lon={longitud}"
     response_geocodificacion = requests.get(url_geocodificacion)
     data_geocodificacion = response_geocodificacion.json()
     ciudad = data_geocodificacion['address']['city']
 
+    # Obtener información del clima actual y pronóstico
     url_clima = f"https://api.open-meteo.com/v1/forecast?latitude={latitud}&longitude={longitud}&hourly=temperature_2m,relativehumidity_2m,precipitation_probability,weathercode,cloudcover,uv_index&daily=weathercode,temperature_2m_max,temperature_2m_min,uv_index_max,precipitation_probability_max&current_weather=true&timezone=America%2FNew_York"
-
     response_clima = requests.get(url_clima)
     data_clima = response_clima.json()
 
+    # Obtener datos del clima actual
     codigo_clima = data_clima['current_weather']['weathercode']
     descripcion = obtener_descripcion_clima(str(codigo_clima))
     humedad_relativa = data_clima['hourly']['relativehumidity_2m'][0]
     nubosidad = data_clima['hourly']['cloudcover'][0]
     probabilidad_lluvia = data_clima['hourly']['precipitation_probability'][0]
-    temperatura =data_clima['current_weather']['temperature']
+    temperatura = data_clima['current_weather']['temperature']
     temperatura_min = data_clima['daily']['temperature_2m_min'][0]
     temperatura_max = data_clima['daily']['temperature_2m_max'][0]
     uv_index_max = data_clima['daily']['uv_index_max'][0]
     uv_index_actual = data_clima['hourly']['uv_index'][0]
 
-    # pronostico dia siguiente
+    # Obtener datos del pronóstico para el día siguiente
     codigo_clima2 = data_clima['daily']['weathercode'][1]
-    descripcion2 = obtener_descripcion_clima(str(codigo_clima))
+    descripcion2 = obtener_descripcion_clima(str(codigo_clima2))
     probabilidad_lluvia2 = data_clima['daily']['precipitation_probability_max'][1]
     temperatura_min2 = data_clima['daily']['temperature_2m_min'][1]
     temperatura_max2 = data_clima['daily']['temperature_2m_max'][1]
     uv_index_max2 = data_clima['daily']['uv_index_max'][1]
 
+    # Crear el objeto de datos del clima
     clima = {
         'ciudad': ciudad,
         'descripcion': descripcion,
@@ -94,8 +95,15 @@ def obtener_clima():
         'uv_index_max2': uv_index_max2,
     }
 
-    return jsonify(clima)
+    # Crear la respuesta JSON con los datos del clima
+    response = jsonify(clima)
 
+    # Agregar encabezados de seguridad a la respuesta
+    response.headers['X-Frame-Options'] = 'DENY'
+    response.headers['X-Content-Type-Options'] = 'nosniff'
+    response.headers['Content-Security-Policy'] = "frame-ancestors 'none'"
+
+    return response
 
 if __name__ == '__main__':
     app.run()
