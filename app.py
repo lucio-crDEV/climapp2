@@ -108,4 +108,5 @@ def obtener_clima():
     response.headers['Content-Security-Policy'] = "frame-ancestors 'none'; geolocation 'self' 'unsafe-inline'"
 
 
-    return response
+if __name__ == '__main__':
+    app.run()
