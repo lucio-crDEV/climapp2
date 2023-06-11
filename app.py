@@ -5,6 +5,8 @@ import requests
 app = Flask(__name__)
 
 # Función para obtener la descripción del clima según el código
+
+
 def obtener_descripcion_clima(clima_actual):
     descripcion_clima = {
         '0': 'Despejado',
@@ -35,9 +37,11 @@ def obtener_descripcion_clima(clima_actual):
     }
     return descripcion_clima.get(clima_actual, 'Desconocido')
 
+
 @app.route('/')
 def index():
     return render_template('index.html')
+
 
 @app.route('/obtener_clima', methods=['POST'])
 def obtener_clima():
@@ -98,12 +102,9 @@ def obtener_clima():
     # Crear la respuesta JSON con los datos del clima
     response = jsonify(clima)
 
-    # Agregar encabezados de seguridad a la respuesta
+    # Ajustar las cabeceras de seguridad para permitir la geolocalización
     response.headers['X-Frame-Options'] = 'DENY'
     response.headers['X-Content-Type-Options'] = 'nosniff'
-    response.headers['Content-Security-Policy'] = "frame-ancestors 'none'"
+    response.headers['Content-Security-Policy'] = "frame-ancestors 'none'; geolocation 'self'"
 
     return response
-
-if __name__ == '__main__':
-    app.run()
