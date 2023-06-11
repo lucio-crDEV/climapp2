@@ -105,6 +105,7 @@ def obtener_clima():
     # Ajustar las cabeceras de seguridad para permitir la geolocalización
     response.headers['X-Frame-Options'] = 'DENY'
     response.headers['X-Content-Type-Options'] = 'nosniff'
-    response.headers['Content-Security-Policy'] = "frame-ancestors 'none'; geolocation 'self'"
+    response.headers['Content-Security-Policy'] = "frame-ancestors 'none'; geolocation 'self' 'unsafe-inline'"
+
 
     return response
