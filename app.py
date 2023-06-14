@@ -1,5 +1,6 @@
 # app.py
 from flask import Flask, render_template, request, jsonify
+from datetime import datetime
 import requests
 
 app = Flask(__name__)
@@ -75,6 +76,16 @@ def obtener_clima():
     temperatura_max2 = data_clima['daily']['temperature_2m_max'][1]
     uv_index_max2 = data_clima['daily']['uv_index_max'][1]
 
+    def obtener_hora_actual(data_clima):
+        fecha_actual = datetime.strptime(
+            data_clima['current_weather']['time'], "%Y-%m-%dT%H:%M")
+        formatted_hora = fecha_actual.strftime("%H:%M")
+        return formatted_hora
+
+    # Fecha y hora actual
+    dia_consulta = datetime.now().strftime("%d/%m/%Y")
+    formatted_hora = obtener_hora_actual(data_clima)
+
     clima = {
         'ciudad': ciudad,
         'descripcion': descripcion,
@@ -92,10 +103,11 @@ def obtener_clima():
         'temperatura_min2': temperatura_min2,
         'temperatura_max2': temperatura_max2,
         'uv_index_max2': uv_index_max2,
+        'formatted_hora': formatted_hora,
+        'dia_consulta': dia_consulta,
     }
 
     return jsonify(clima)
-
 
 if __name__ == '__main__':
     app.run()

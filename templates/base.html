@@ -118,6 +118,8 @@
         var temperatura_min2Element = $("#temperatura_min2");
         var temperatura_max2Element = $("#temperatura_max2");
         var uv_index_max2Element = $("#uv_index_max2");
+        var formatted_horaElement = $("#formatted_hora");
+        var dia_consultaElement = $("#dia_consulta");
 
         // Limpiando variables para cada consulta
         ciudadElement.empty();
@@ -140,6 +142,8 @@
         temperatura_min2Element.empty();
         temperatura_max2Element.empty();
         uv_index_max2Element.empty();
+        formatted_horaElement.empty();
+        dia_consultaElement.empty();
 
         // Obtener la ubicación actual del usuario
         function obtenerUbicacion() {
@@ -202,11 +206,12 @@
               temperatura_min2Element.text(response.temperatura_min2 + "°C");
               temperatura_max2Element.text(response.temperatura_max2 + "°C");
               uv_index_max2Element.text(response.uv_index_max2);
+              formatted_horaElement.text(response.formatted_hora)
+              dia_consultaElement.text(response.dia_consulta+ " | " + response.ciudad)
 
               // Obtener el icono correspondiente al clima
               obtenerIconoClima(response.descripcion);
               obtenerIconoClima2(response.descripcion2);
-              // obtenerIconoClima(response.descripcion2Element);
 
               // Mostrar el contenido del clima
               $(".cargando").hide();
