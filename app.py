@@ -2,11 +2,9 @@
 from flask import Flask, render_template, request, jsonify
 from datetime import datetime
 import requests
-from dotenv import load_dotenv
 
 app = Flask(__name__)
 
-load_dotenv()
 
 def obtener_descripcion_clima(clima_actual):
     descripcion_clima = {
@@ -113,8 +111,5 @@ def obtener_clima():
 
 
 if __name__ == '__main__':
-    import subprocess
-    # Activa las analíticas de Vercel después de iniciar la aplicación
-    subprocess.Popen(['npx', 'analytics', 'deploy', '--project-id', 'prj_LB0kAD1FiZehg7V581Fx3yVsAfwt', '--token', VERCEL_TOKEN])
 
     app.run()
