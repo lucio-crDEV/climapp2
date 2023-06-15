@@ -77,6 +77,21 @@ body{
     outline: none;
 }
 
+
+.clipboard, .clipboard:focus-visible, .clipboard:focus{
+    padding: 0 1.5rem;
+    right: 1rem;
+    outline: none;
+    border: none;
+}
+
+.clipboard:hover{
+    cursor: pointer;
+    opacity: 0.8;
+    transition: 1s;
+}
+
+
 .footer{
     font-weight: 100;
     color: #eab3fa;
