@@ -80,7 +80,6 @@ body{
 
 .clipboard, .clipboard:focus-visible, .clipboard:focus{
     padding: 0 1.5rem;
-    right: 1rem;
     outline: none;
     border: none;
 }
