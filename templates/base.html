@@ -34,7 +34,10 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Climapp</title>
     <!-- GSC -->
-    <meta name="google-site-verification" content="mAWW4GBDccZDYQG8h-rDJFXpQnY7B_onLae1uz1S30E" />
+    <meta
+      name="google-site-verification"
+      content="mAWW4GBDccZDYQG8h-rDJFXpQnY7B_onLae1uz1S30E"
+    />
     <!-- Bootstrap css -->
     <link
       rel="stylesheet"
@@ -96,7 +99,9 @@
       <!-- Otros elementos comunes del pie de página -->
     </footer>
 
-    <!-- Agrega aquí tus scripts JavaScript comunes -->
+    <!-- vercel analytics -->
+    <script defer src="/_vercel/insights/script.js"></script>
+    <!-- Popper Bootstrap -->
     <script
       src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.11.8/dist/umd/popper.min.js"
       integrity="sha384-I7E8VVD/ismYTF4hNIPjVp/Zjvgyol6VFvRkX/vR+Vc4jQkC+hVqc2pM8ODewa9r"
@@ -252,7 +257,7 @@
 
               //Copiar clima al clipboard
               myTooltipEl.addEventListener("click", () => {
-                copyToClipboard("#temperaturaActual")
+                copyToClipboard("#temperaturaActual");
                 tooltip.setContent({ ".tooltip-inner": "Copiado!" });
                 setTimeout(() => {
                   tooltip.hide();
@@ -264,10 +269,12 @@
 
               //Compartir pagina
               myTooltipEl2.addEventListener("click", () => {
-                copyToClipboard("#urlApp")
+                copyToClipboard("#urlApp");
                 setTimeout(() => {
                   setTimeout(() => {
-                    alert("Url de la APP copiada exitosamente \nEnvíasela a alguien para que revise su pronóstico climático!")
+                    alert(
+                      "Url de la APP copiada exitosamente \nEnvíasela a alguien para que revise su pronóstico climático!"
+                    );
                   }, 300);
                   tooltip2.hide();
                 }, 1000);
