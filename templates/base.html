@@ -262,9 +262,11 @@
 
               //Compartir pagina
               myTooltipEl2.addEventListener("click", () => {
-                copyToClipboard("https://climaqui.vercel.app/")
+                copyToClipboard("#urlApp")
                 setTimeout(() => {
-                  alert('Url de App copiada, envíasela a quien desees!')
+                  setTimeout(() => {
+                    alert("Url de la APP copiada exitosamente \nEnvíasela a alguien para que revise su pronóstico climático!")
+                  }, 300);
                   tooltip2.hide();
                 }, 1000);
               });
