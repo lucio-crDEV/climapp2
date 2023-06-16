@@ -1,5 +1,5 @@
-document.querySelector(document).ready(function () {
-  function mostrarMensaje() {
+window.addEventListener("DOMContentLoaded", () => {
+  (()=>{
     setTimeout(() => {
       document.querySelector("#msjeNavegador").removeClass("display-none");
       setTimeout(() => {
@@ -12,7 +12,5 @@ document.querySelector(document).ready(function () {
         }, 1000);
       }, 2000);
     }, 2000);
-  }
-
-  mostrarMensaje();
+  })()
 });
