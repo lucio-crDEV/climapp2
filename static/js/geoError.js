@@ -1,13 +1,13 @@
 window.addEventListener("DOMContentLoaded", () => {
   (()=>{
     setTimeout(() => {
-      document.querySelector("#msjeNavegador").removeClass("display-none");
+      document.querySelector("#msjeNavegador").classList.remove("display-none");
       setTimeout(() => {
-        document.querySelector(".autoriza").removeClass("display-none");
+        document.querySelector(".autoriza").classList.remove("display-none");
         setTimeout(() => {
-          document.querySelector(".autorizaLink").removeClass("display-none");
+          document.querySelector(".autorizaLink").classList.remove("display-none");
           setTimeout(() => {
-            document.querySelector(".authOk").removeClass("display-none");
+            document.querySelector(".authOk").classList.remove("display-none");
           }, 4000);
         }, 1000);
       }, 2000);

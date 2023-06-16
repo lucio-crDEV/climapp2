@@ -1,7 +1,9 @@
-export default function mostrarModal() {
-  document.querySelector("#modal321").modal("toggle");
+const mostrarModal = () => {
+  document.querySelector("#modal321").modal("toggle")
 }
 
-export default function closeModal() {
-  document.querySelector("#modal321").modal("hide");
+const closeModal = () => {
+  document.querySelector("#modal321").modal("hide")
 }
+
+export { mostrarModal, closeModal }
