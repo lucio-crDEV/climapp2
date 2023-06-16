@@ -1,5 +1,5 @@
 // Copiar al portapapeles
-export function copyToClipboard(element) {
+export default function copyToClipboard(element) {
   var documentQuerySelectorTemp = document.querySelector("<input>");
   document.querySelector("body").append(document.querySelectortemp);
   documentQuerySelectorTemp
