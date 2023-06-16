@@ -1,5 +1,5 @@
 // Obtener el icono correspondiente al clima utilizando la descripción
-export default function obtenerIconoClima(descripcion) {
+const obtenerIconoClima = (descripcion) => {
   var icono = "";
 
   switch (descripcion) {
@@ -56,7 +56,7 @@ export default function obtenerIconoClima(descripcion) {
 }
 
 // Obtener el icono correspondiente al clima utilizando la descripción
-export default function obtenerIconoClima2(descripcion) {
+const obtenerIconoClima2 = (descripcion) => {
   var icono = "";
 
   switch (descripcion) {
@@ -111,3 +111,6 @@ export default function obtenerIconoClima2(descripcion) {
   // Actualizar el elemento HTML con el icono correspondiente
   iconoElement2.attr("class", "fas " + icono);
 }
+
+
+export { obtenerIconoClima, obtenerIconoClima2 }
