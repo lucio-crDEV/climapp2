@@ -1,7 +1,6 @@
 <!-- index.html -->
 {% extends 'base.html' %} {% block content %}
-<script defer src="{{ url_for('static', filename='js/index.js') }}"></script>
-<script src="{{ url_for('static', filename='js/location.js') }}"></script>
+
 
 <div class="container-fluid">
   <div id="carousel" class="owl-carousel" style="display: none;">
@@ -233,6 +232,7 @@
   </div>
 </div>
 
-
+<script async src="{{ url_for('static', filename='js/index.js') }}"></script>
+<script async src="{{ url_for('static', filename='js/location.js') }}"></script>
 
 {% endblock %}
