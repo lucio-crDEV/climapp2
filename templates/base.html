@@ -29,8 +29,8 @@
     integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous" />
   <!-- jQuery -->
   <!-- refactorizar -->
-  <script src="https://code.jquery.com/jquery-3.7.0.js"
-    integrity="sha256-JlqSTELeR4TLqP0OG9dxM7yDPqX1ox/HfgiSLBj8+kM=" crossorigin="anonymous"></script>
+  <script src="https://code.jquery.com/jquery-3.7.0.js" integrity="sha256-JlqSTELeR4TLqP0OG9dxM7yDPqX1ox/HfgiSLBj8+kM="
+    crossorigin="anonymous"></script>
   <!-- Owl Carousel CSS -->
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/OwlCarousel2/2.3.4/assets/owl.carousel.min.css" />
   <link rel="stylesheet"
@@ -242,9 +242,11 @@
             });
 
             // Mostrar el contenido del clima
-            $(".cargando").hide();
-            $(".contenido-clima").show();
-            $("#carousel").show();
+            setTimeout(() => {
+              $("#carousel").fadeIn(300);
+              $(".contenido-clima").fadeIn();
+            }, 600);
+            $(".cargando").fadeOut(500);
           },
           error: function (error) {
             // Manejar los errores de la solicitud
