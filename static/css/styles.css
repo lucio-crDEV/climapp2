@@ -51,6 +51,7 @@ body {
   cursor: pointer;
   transition: all 300ms;
   opacity: 1;
+  user-select: none;
 }
 
 .titulo:hover{
