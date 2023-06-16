@@ -151,5 +151,3 @@ pyvenv.cfg
 lib64
 .vercel
 analytics.env
-node_modules/
-package-lock.json

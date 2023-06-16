@@ -1,7 +1,5 @@
 <!-- index.html -->
 {% extends 'base.html' %} {% block content %}
-
-
 <div class="container-fluid">
   <div id="carousel" class="owl-carousel" style="display: none;">
     <div class="item">
@@ -10,7 +8,11 @@
         <div class="glassmorfismo card-body">
           <!-- cargando -->
           <div class="cargando">
-            <div class="spinner-grow mb-4" style="width: 3rem; height: 3rem;" role="status">
+            <div
+              class="spinner-grow mb-4"
+              style="width: 3rem; height: 3rem;"
+              role="status"
+            >
               <span class="sr-only">Loading...</span>
             </div>
           </div>
@@ -26,67 +28,101 @@
               <br />
               <p id="descripcion" class="h5 pt-3 text-center"></p>
               <p id="temperaturaActual" class="pt-3 h4 font-weight-bold">
-                La temperatura actual es de &nbsp;<strong id="temperatura"></strong>
+                La temperatura actual es de &nbsp;<strong
+                id="temperatura"
+                ></strong>
                 <br>
                 <!-- Botones -->
-              <div class="flex mt-3 mb-4-4">
-                <button id="climaActual" class="clipboard" type="button" class="btn border-0 bg-transparent"
-                  data-bs-toggle="tooltip" data-bs-placement="bottom" data-bs-title="Copiar clima"
-                  style="border: none; padding: 0 1.5rem; outline: none;" onmouseenter="this.style.border='none'"
-                  onmouseup="this.style.border='none'" onmouseout="this.style.border='none'">
-                  <svg xmlns="http://www.w3.org/2000/svg" height="1.5rem" viewBox="0 0 512 512">
+                <div class="flex mt-3 mb-4-4">
+                  <button
+                  id="climaActual"
+                  class="clipboard"
+                  type="button"
+                  class="btn border-0 bg-transparent"
+                  data-bs-toggle="tooltip"
+                  data-bs-placement="bottom"
+                  data-bs-title="Copiar clima"
+                  style="border: none; padding: 0 1.5rem; outline: none;"
+                  onmouseenter="this.style.border='none'"
+                  onmouseup="this.style.border='none'"
+                  onmouseout="this.style.border='none'"
+                >
+                  <svg
+                    xmlns="http://www.w3.org/2000/svg"
+                    height="1.5rem"
+                    viewBox="0 0 512 512"
+                  >
                     <style>
                       svg {
                         fill: #ffffff;
                       }
                     </style>
                     <path
-                      d="M272 0H396.1c12.7 0 24.9 5.1 33.9 14.1l67.9 67.9c9 9 14.1 21.2 14.1 33.9V336c0 26.5-21.5 48-48 48H272c-26.5 0-48-21.5-48-48V48c0-26.5 21.5-48 48-48zM48 128H192v64H64V448H256V416h64v48c0 26.5-21.5 48-48 48H48c-26.5 0-48-21.5-48-48V176c0-26.5 21.5-48 48-48z" />
+                      d="M272 0H396.1c12.7 0 24.9 5.1 33.9 14.1l67.9 67.9c9 9 14.1 21.2 14.1 33.9V336c0 26.5-21.5 48-48 48H272c-26.5 0-48-21.5-48-48V48c0-26.5 21.5-48 48-48zM48 128H192v64H64V448H256V416h64v48c0 26.5-21.5 48-48 48H48c-26.5 0-48-21.5-48-48V176c0-26.5 21.5-48 48-48z"
+                    />
                   </svg>
                 </button>
                 <span class="d-none" id="urlApp">https://climaqui.vercel.app/</span>
-                <button id="compartir" class="clipboard" type="button" class="btn border-0 bg-transparent"
-                  data-bs-toggle="tooltip" data-bs-placement="bottom" data-bs-title="Compartir clima"
-                  style="border: none; padding: 0 1.5rem; outline: none;" onmouseenter="this.style.border='none'"
-                  onmouseup="this.style.border='none'" onmouseout="this.style.border='none'" data-toggle="modal"
-                  data-target="#modal321" onclick="mostrarModal()">
-                  <svg xmlns="http://www.w3.org/2000/svg" height="1.5rem" viewBox="0 0 576 512">
-                    <style>
-                      svg {
-                        fill: #ffffff
-                      }
-                    </style>
-                    <path
-                      d="M400 255.4V240 208c0-8.8-7.2-16-16-16H352 336 289.5c-50.9 0-93.9 33.5-108.3 79.6c-3.3-9.4-5.2-19.8-5.2-31.6c0-61.9 50.1-112 112-112h48 16 32c8.8 0 16-7.2 16-16V80 64.6L506 160 400 255.4zM336 240h16v48c0 17.7 14.3 32 32 32h3.7c7.9 0 15.5-2.9 21.4-8.2l139-125.1c7.6-6.8 11.9-16.5 11.9-26.7s-4.3-19.9-11.9-26.7L409.9 8.9C403.5 3.2 395.3 0 386.7 0C367.5 0 352 15.5 352 34.7V80H336 304 288c-88.4 0-160 71.6-160 160c0 60.4 34.6 99.1 63.9 120.9c5.9 4.4 11.5 8.1 16.7 11.2c4.4 2.7 8.5 4.9 11.9 6.6c3.4 1.7 6.2 3 8.2 3.9c2.2 1 4.6 1.4 7.1 1.4h2.5c9.8 0 17.8-8 17.8-17.8c0-7.8-5.3-14.7-11.6-19.5l0 0c-.4-.3-.7-.5-1.1-.8c-1.7-1.1-3.4-2.5-5-4.1c-.8-.8-1.7-1.6-2.5-2.6s-1.6-1.9-2.4-2.9c-1.8-2.5-3.5-5.3-5-8.5c-2.6-6-4.3-13.3-4.3-22.4c0-36.1 29.3-65.5 65.5-65.5H304h32zM72 32C32.2 32 0 64.2 0 104V440c0 39.8 32.2 72 72 72H408c39.8 0 72-32.2 72-72V376c0-13.3-10.7-24-24-24s-24 10.7-24 24v64c0 13.3-10.7 24-24 24H72c-13.3 0-24-10.7-24-24V104c0-13.3 10.7-24 24-24h64c13.3 0 24-10.7 24-24s-10.7-24-24-24H72z" />
-                  </svg>
+                <button
+                    id="compartir"
+                    class="clipboard"
+                    type="button"
+                    class="btn border-0 bg-transparent"
+                    data-bs-toggle="tooltip"
+                    data-bs-placement="bottom"
+                    data-bs-title="Compartir clima"
+                    style="border: none; padding: 0 1.5rem; outline: none;"
+                    onmouseenter="this.style.border='none'"
+                    onmouseup="this.style.border='none'"
+                    onmouseout="this.style.border='none'"
+                    >
+                  <svg xmlns="http://www.w3.org/2000/svg" height="1.5rem" viewBox="0 0 576 512"><style>svg{fill:#ffffff}</style><path d="M400 255.4V240 208c0-8.8-7.2-16-16-16H352 336 289.5c-50.9 0-93.9 33.5-108.3 79.6c-3.3-9.4-5.2-19.8-5.2-31.6c0-61.9 50.1-112 112-112h48 16 32c8.8 0 16-7.2 16-16V80 64.6L506 160 400 255.4zM336 240h16v48c0 17.7 14.3 32 32 32h3.7c7.9 0 15.5-2.9 21.4-8.2l139-125.1c7.6-6.8 11.9-16.5 11.9-26.7s-4.3-19.9-11.9-26.7L409.9 8.9C403.5 3.2 395.3 0 386.7 0C367.5 0 352 15.5 352 34.7V80H336 304 288c-88.4 0-160 71.6-160 160c0 60.4 34.6 99.1 63.9 120.9c5.9 4.4 11.5 8.1 16.7 11.2c4.4 2.7 8.5 4.9 11.9 6.6c3.4 1.7 6.2 3 8.2 3.9c2.2 1 4.6 1.4 7.1 1.4h2.5c9.8 0 17.8-8 17.8-17.8c0-7.8-5.3-14.7-11.6-19.5l0 0c-.4-.3-.7-.5-1.1-.8c-1.7-1.1-3.4-2.5-5-4.1c-.8-.8-1.7-1.6-2.5-2.6s-1.6-1.9-2.4-2.9c-1.8-2.5-3.5-5.3-5-8.5c-2.6-6-4.3-13.3-4.3-22.4c0-36.1 29.3-65.5 65.5-65.5H304h32zM72 32C32.2 32 0 64.2 0 104V440c0 39.8 32.2 72 72 72H408c39.8 0 72-32.2 72-72V376c0-13.3-10.7-24-24-24s-24 10.7-24 24v64c0 13.3-10.7 24-24 24H72c-13.3 0-24-10.7-24-24V104c0-13.3 10.7-24 24-24h64c13.3 0 24-10.7 24-24s-10.7-24-24-24H72z"/></svg>
                 </button>
-                </p>
+              </p>
               </div>
               <small id="dia_consulta"></small> <br />
-              <small class="fs-6 fw-light">Actualizado a las: <span id="formatted_hora"></span> hrs</small>
+              <small class="fs-6 fw-light"
+                >Actualizado a las: <span id="formatted_hora"></span> hrs</small
+              >
               <hr />
               <div class="container-fluid mt-4">
                 <div class="row mt-lg-3 mt-md-3 mt-sm-2">
                   <div class="col-6 mx-auto py-4">
-                    <p class="light-font position-relative translate-middle-y py-4">
-                      Posibilidad de lluvia<br /><br /><span class="h5" id="probLluvia"></span>
+                    <p
+                      class="light-font position-relative translate-middle-y py-4"
+                    >
+                      Posibilidad de lluvia<br /><br /><span
+                        class="h5"
+                        id="probLluvia"
+                      ></span>
                     </p>
                   </div>
                   <div class="col-6 mx-auto py-4">
-                    <p class="light-font position-relative translate-middle-y py-4">
-                      Nubosidad actual<br /><br /><span class="h5" id="nubosidad"></span>
+                    <p
+                      class="light-font position-relative translate-middle-y py-4"
+                    >
+                      Nubosidad actual<br /><br /><span
+                        class="h5"
+                        id="nubosidad"
+                      ></span>
                     </p>
                   </div>
                 </div>
                 <div class="row mt-lg-3 mt-md-3 mt-sm-2">
                   <div class="col col-md-6 col-sm-6 mx-auto">
                     <p class="light-font position-relative translate-middle-y">
-                      Índice UV<br /><br /><span class="h5" id="uvActual"></span>
+                      Índice UV<br /><br /><span
+                        class="h5"
+                        id="uvActual"
+                      ></span>
                     </p>
                   </div>
                   <div class="col col-md-6 col-sm-6">
                     <p class="light-font position-relative translate-middle-y">
-                      Nivel de humedad<br /><br /><span class="h5" id="humedad"></span>
+                      Nivel de humedad<br /><br /><span
+                        class="h5"
+                        id="humedad"
+                      ></span>
                     </p>
                   </div>
                 </div>
@@ -100,19 +136,28 @@
                 <div class="row justify-content-center">
                   <div class="col-6 col-lg-6 col-sm-12 w-100">
                     <p class="light-font">
-                      T° máxima:<br /><br /><span class="h5 pt-5" id="temp_max"></span>
+                      T° máxima:<br /><br /><span
+                        class="h5 pt-5"
+                        id="temp_max"
+                      ></span>
                     </p>
                   </div>
                   <div class="col-6 col-lg-6 col-sm-12 w-100">
                     <p class="light-font">
-                      T° mínima:<br /><br /><span class="h5 pt-5" id="temp_min"></span>
+                      T° mínima:<br /><br /><span
+                        class="h5 pt-5"
+                        id="temp_min"
+                      ></span>
                     </p>
                   </div>
                 </div>
                 <div class="row mt-lg-3 mt-md-3 mt-sm-2">
                   <div class="col-12 col-lg-6 mx-auto w-100">
                     <p class="light-font">
-                      Índice UV máximo<br /><br /><span class="h5" id="uv_max"></span>
+                      Índice UV máximo<br /><br /><span
+                        class="h5"
+                        id="uv_max"
+                      ></span>
                     </p>
                   </div>
                 </div>
@@ -128,7 +173,11 @@
       <div class="glassmorfismo text-center mb-3">
         <div class="card-body">
           <div class="cargando">
-            <div class="spinner-grow mb-4" style="width: 3rem; height: 3rem;" role="status">
+            <div
+              class="spinner-grow mb-4"
+              style="width: 3rem; height: 3rem;"
+              role="status"
+            >
               <span class="sr-only">Loading...</span>
             </div>
           </div>
@@ -150,13 +199,18 @@
                     <p class="light-font position-relative translate-middle-y">
                       T° máxima:
                       <br /><br />
-                      <span class="h5 pt-5 position-relative translate-middle-y" id="temperatura_max2"></span>
+                      <span
+                        class="h5 pt-5 position-relative translate-middle-y"
+                        id="temperatura_max2"
+                      ></span>
                     </p>
                   </div>
                   <div class="col">
                     <p class="light-font position-relative translate-middle-y">
-                      T° mínima:<br /><br /><span class="h5 pt-5 position-relative translate-middle-y"
-                        id="temperatura_min2"></span>
+                      T° mínima:<br /><br /><span
+                        class="h5 pt-5 position-relative translate-middle-y"
+                        id="temperatura_min2"
+                      ></span>
                     </p>
                   </div>
                 </div>
@@ -171,8 +225,10 @@
                 <div class="row px-lg-4 mt-lg-4 mt-md-3 mt-sm-2">
                   <div class="col mx-auto">
                     <p class="light-font position-relative translate-middle-y">
-                      Índice UV máximo para el día<br /><br /><span class="h5 pt-5 position-relative translate-middle-y"
-                        id="uv_index_max2"></span>
+                      Índice UV máximo para el día<br /><br /><span
+                        class="h5 pt-5 position-relative translate-middle-y"
+                        id="uv_index_max2"
+                      ></span>
                     </p>
                   </div>
                 </div>
@@ -186,51 +242,59 @@
 
 <!-- Mensaje de error geolocalizacion no obtenida -->
 <div class="glassmorfismo text-center mb-3">
-  <div id="svgWrapper" class="my-4 text-center animate__animated animate__heartBeat animate__repeat-3">
-    <img class="animate__animated animate__heartBeat animate__repeat-2 animate__delay-4s" id="svgError"
-      src="{{ url_for('static', filename='svg/error.svg') }}" alt="Geo error" />
+  <div
+    id="svgWrapper"
+    class="mt-2 mb-4 text-center animate__animated animate__heartBeat animate__repeat-3"
+    style="display: none;"
+  >
+    <img
+      class="animate__animated animate__heartBeat animate__repeat-2 animate__delay-4s"
+      id="svgError"
+      src="{{ url_for('static', filename='svg/error.svg') }}"
+      alt="Geo error"
+    />
   </div>
 
-  <div id="mensaje-error" class="transition-error text-justify mx-4 mb-4 text-white">
-    <p>⚠️&nbsp;No se pudo obtener la información del clima. </p>
-    <p id="msjeNavegador" class="display-none">⚠️&nbsp;Asegurate de estar desde tu navegador. </p>
-    <div>
-      <p class="autoriza display-none font-weight-bold">⛔Debes autorizar el acceso a tu ubicación.
-      </p>
-      <p> <small class="autorizaLink display-none font-weight-normal">Si no sabes cómo te dejo el
-          siguiente
-          <a target="_blank" href="https://support.google.com/chrome/answer/142065?hl=Es-419&ref_topic=7439541"
-            style="cursor: pointer; color: #31c5ff" onmouseover="this.style.color='#79d0f3'"
-            onmouseleave="this.style.color='#1ba8df'"> Link </a></small>
-      </p>
-    </div>
-    <p class="display-none authOk">
+  <div id="mensaje-error" style="display: none;" class="text-left ml-4">
+    <p class="text-warning">⚠️ No se pudo obtener la información del clima.</p>
+    <p id="autoriza" class="text-danger d-none">
+      ⛔ Debes autorizar el acceso a tu ubicación. Si no sabes cómo te dejo el
+      siguiente
+      <a
+        class="text-primary"
+        target="_blank"
+        href="https://support.google.com/chrome/answer/142065?hl=Es-419&ref_topic=7439541"
+        style="cursor: pointer;"
+        >Link
+      </a>
+    </p>
+    <p class="text-success d-none authOk">
       ✅ Si ya autorizaste los permisos de ubicación puedes recargar la página
       para obtener tus resultados
     </p>
-    <button class="btn btn-primary" onclick="window.location.reload(true);">
-      Recargar
-    </button>
-  </div>
-
-  <!-- Modal -->
-  <div class="modal fade" id="modal321" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
-    <div class="modal-dialog modal-dialog-centered">
-      <div class="modal-content text-dark">
-        <div class="modal-body pt-4 px-4 text-center">
-          <small>Url de la APP copiada exitosamente ✅</small><br> <br>
-          <p>Envíasela a alguien para que revise su pronóstico climático!</p>
-        </div>
-        <div class="modal-footer flex justify-content-center">
-          <button type="button" class="btn btn-primary" onclick="closeModal()">Cerrar</button>
-        </div>
-      </div>
+    <div class="text-center mt-4">
+      <button
+        class="btn btn-primary d-none authOk"
+        onclick="window.location.reload(true);"
+      >
+        Recargar
+      </button>
     </div>
   </div>
+</div>
 
+<script>
+  $(document).ready(function () {
+    function mostrarMensaje() {
+      setTimeout(() => {
+        $("#autoriza").removeClass("d-none");
+        setTimeout(() => {
+          $(".authOk").removeClass("d-none");
+        }, 6000);
+      }, 2000);
+    }
 
-  <script src="{{ url_for('static', filename='js/geoError.js') }}"></script>
-  <!-- <script src="{{ url_for('static', filename='js/showWeather.js') }}"></script> -->
-  <script async type="module" src="{{ url_for('static', filename='js/modal.js') }}"></script>
-
-  {% endblock %}
+    mostrarMensaje();
+  });
+</script>
+{% endblock %}
