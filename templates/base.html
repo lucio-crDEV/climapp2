@@ -70,7 +70,7 @@
   </footer>
 
   <!-- Vercel analytics -->
-  <script defer src="/_vercel/insights/script.js"></script>
+  <script src="/_vercel/insights/script.js"></script>
   <!-- Popper & Bootstrap -->
   <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.11.8/dist/umd/popper.min.js"
     integrity="sha384-I7E8VVD/ismYTF4hNIPjVp/Zjvgyol6VFvRkX/vR+Vc4jQkC+hVqc2pM8ODewa9r"
@@ -80,18 +80,19 @@
     crossorigin="anonymous"></script>
 
   <script>
-    $(document).ready(function () {
-      const tooltipTriggerList = document.querySelectorAll(
-        '[data-bs-toggle="tooltip"]'
-      );
-      const tooltipList = [...tooltipTriggerList].map(
-        (tooltipTriggerEl) => new bootstrap.Tooltip(tooltipTriggerEl)
-      );
+    const tooltipTriggerList = document.querySelectorAll(
+      '[data-bs-toggle="tooltip"]'
+    );
+    const tooltipList = [...tooltipTriggerList].map(
+      (tooltipTriggerEl) => new bootstrap.Tooltip(tooltipTriggerEl)
+    );
 
-      const myTooltipEl = document.getElementById("climaActual");
-      const tooltip = bootstrap.Tooltip.getOrCreateInstance(myTooltipEl);
-      const myTooltipEl2 = document.getElementById("compartir");
-      const tooltip2 = bootstrap.Tooltip.getOrCreateInstance(myTooltipEl2);
+    const myTooltipEl = document.getElementById("climaActual");
+    const tooltip = bootstrap.Tooltip.getOrCreateInstance(myTooltipEl);
+    const myTooltipEl2 = document.getElementById("compartir");
+    const tooltip2 = bootstrap.Tooltip.getOrCreateInstance(myTooltipEl2);
+
+    $(document).ready(function () {
 
       // Obtener los elementos HTML
       var ciudadElement = $(".ciudad");
