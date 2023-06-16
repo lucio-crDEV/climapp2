@@ -4,14 +4,15 @@
 <div class="container-fluid">
   <div id="carousel" class="owl-carousel" style="display: none;">
     <div class="item">
-      <!-- Card del clima -->
       <div class="text-center mb-4 mx-auto">
-        <div class="glassmorfismo card-body">
-          <div class="cargando">
-            <div class="spinner-grow mb-4" style="width: 3rem; height: 3rem;" role="status">
-              <span class="sr-only">Loading...</span>
-            </div>
+        <!-- cargando -->
+        <div class="cargando">
+          <div class="spinner-grow mb-4" style="width: 3rem; height: 3rem;" role="status">
+            <span class="sr-only">Loading...</span>
           </div>
+        </div>
+        <!-- Card del clima -->
+        <div class="glassmorfismo card-body">
           <div class="contenido-clima" style="display: none;">
             <div id="pronostico" class="card-header">
               <h3>
@@ -179,38 +180,39 @@
       </div>
     </div>
   </div>
-</div>
-<div class="glassmorfismo text-center mb-3">
-  <div id="svgWrapper" class="my-4 text-center animate__animated animate__heartBeat animate__repeat-3"
-    style="display: none;">
-    <img class="animate__animated animate__heartBeat animate__repeat-2 animate__delay-4s" id="svgError"
-      src="{{ url_for('static', filename='svg/error.svg') }}" alt="Geo error" />
-  </div>
 
-  <div id="mensaje-error" class="transition-error text-justify mx-4 mb-4 text-white">
-    <p>⚠️&nbsp;No se pudo obtener la información del clima. </p>
-    <p id="msjeNavegador" class="display-none">⚠️&nbsp;Asegurate de estar desde tu navegador. </p>
-    <div>
-      <p class="autoriza display-none font-weight-bold">⛔Debes autorizar el acceso a tu ubicación.
-      <p> <small class="autorizaLink display-none font-weight-normal">Si no sabes cómo te dejo el
-          siguiente
-          <a target="_blank" href="https://support.google.com/chrome/answer/142065?hl=Es-419&ref_topic=7439541"
-            style="cursor: pointer; color: #31c5ff" onmouseover="this.style.color='#79d0f3'"
-            onmouseleave="this.style.color='#1ba8df'">
-            Link
-          </a>
-        </small>
-      </p>
-      </p>
+  <div class="glassmorfismo text-center mb-3">
+    <div id="svgWrapper" class="my-4 text-center animate__animated animate__heartBeat animate__repeat-3"
+      style="display: none;">
+      <img class="animate__animated animate__heartBeat animate__repeat-2 animate__delay-4s" id="svgError"
+        src="{{ url_for('static', filename='svg/error.svg') }}" alt="Geo error" />
     </div>
-    <p class="display-none authOk">
-      ✅ Si ya autorizaste los permisos de ubicación puedes recargar la página
-      para obtener tus resultados
-    </p>
-    <div class="text-center mt-4">
-      <button class="btn btn-primary display-none authOk" onclick="window.location.reload(true);">
-        Recargar
-      </button>
+
+    <div id="mensaje-error" class="transition-error text-justify mx-4 mb-4 text-white">
+      <p>⚠️&nbsp;No se pudo obtener la información del clima. </p>
+      <p id="msjeNavegador" class="display-none">⚠️&nbsp;Asegurate de estar desde tu navegador. </p>
+      <div>
+        <p class="autoriza display-none font-weight-bold">⛔Debes autorizar el acceso a tu ubicación.
+        <p> <small class="autorizaLink display-none font-weight-normal">Si no sabes cómo te dejo el
+            siguiente
+            <a target="_blank" href="https://support.google.com/chrome/answer/142065?hl=Es-419&ref_topic=7439541"
+              style="cursor: pointer; color: #31c5ff" onmouseover="this.style.color='#79d0f3'"
+              onmouseleave="this.style.color='#1ba8df'">
+              Link
+            </a>
+          </small>
+        </p>
+        </p>
+      </div>
+      <p class="display-none authOk">
+        ✅ Si ya autorizaste los permisos de ubicación puedes recargar la página
+        para obtener tus resultados
+      </p>
+      <div class="text-center mt-4">
+        <button class="btn btn-primary display-none authOk" onclick="window.location.reload(true);">
+          Recargar
+        </button>
+      </div>
     </div>
   </div>
 </div>
