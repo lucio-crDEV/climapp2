@@ -3,7 +3,7 @@ from flask import Flask, render_template, request, jsonify
 from datetime import datetime
 import requests
 
-app = Flask(__name__)
+app = Flask(__name__, static_folder='static')
 
 
 def obtener_descripcion_clima(clima_actual):
