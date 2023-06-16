@@ -1,9 +1,10 @@
 // static/js/main.js
 
 function mostrarModal() {
-    $('#modal321').modal('toggle')
+    document.getElementById("modal321").classList.toggle("show");
   }
-
+  
   function closeModal() {
-    $('#modal321').modal('hide')
+    document.getElementById("modal321").classList.remove("show");
   }
+  

@@ -1,18 +1,19 @@
-$(document).ready(function () {
+document.addEventListener("DOMContentLoaded", function() {
     function mostrarMensaje() {
-      setTimeout(() => {
-        $("#msjeNavegador").removeClass("display-none")
-        setTimeout(() => {
-          $(".autoriza").removeClass("display-none");
-          setTimeout(() => {
-            $(".autorizaLink").removeClass("display-none")
-            setTimeout(() => {
-              $(".authOk").removeClass("display-none");
+      setTimeout(function() {
+        document.getElementById("msjeNavegador").classList.remove("display-none");
+        setTimeout(function() {
+          document.querySelector(".autoriza").classList.remove("display-none");
+          setTimeout(function() {
+            document.querySelector(".autorizaLink").classList.remove("display-none");
+            setTimeout(function() {
+              document.querySelector(".authOk").classList.remove("display-none");
             }, 4000);
           }, 1000);
         }, 2000);
       }, 2000);
     }
-
+  
     mostrarMensaje();
   });
+  
