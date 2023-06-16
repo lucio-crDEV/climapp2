@@ -1,6 +1,6 @@
 import { obtenerIconoClima, obtenerIconoClima2 } from getClimate;
 import { clearElements } from clearAll;
-import { toolTips } from toolTips; 
+import { toolTips } from toolTips;
 
 
   // Obtener la ubicación actual del usuario
