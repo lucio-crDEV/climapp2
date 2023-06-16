@@ -1,156 +1,188 @@
 /* style.css */
-*{
-    background-color: transparent;
-    font-family: 'Montserrat', sans-serif;
-    font-family: 'Sora', sans-serif;
+* {
+  background-color: transparent;
+  font-family: "Montserrat", sans-serif;
+  font-family: "Sora", sans-serif;
 }
 
-body{
-    background: conic-gradient(at right top, rgb(251, 113, 133), rgb(217, 70, 239), rgb(99, 102, 241));
-    background-repeat: no-repeat;
-    scroll-behavior: smooth;
-    height: calc(100vh);
+body {
+  background: conic-gradient(
+    at right top,
+    rgb(251, 113, 133),
+    rgb(217, 70, 239),
+    rgb(99, 102, 241)
+  );
+  background-repeat: no-repeat;
+  scroll-behavior: smooth;
+  height: calc(100vh);
 }
 
 ::-webkit-scrollbar {
-    display: none; }
-
-.light-font{
-    font-size: .8rem;
-    font-weight: 100;
-    background: rgba( 239, 239, 239, 0.1 );
-    box-shadow: 0 8px 32px 0 rgba( 31, 38, 135, 0.37 );
-    backdrop-filter: blur( 14.5px );
-    -webkit-backdrop-filter: blur( 14.5px );
-    border-radius: 10px;
-    padding: 1rem;
-    height: 8rem;
-    width: 100%;
+  display: none;
 }
 
-.light-font2{
-    font-size: .8rem;
-    font-weight: 100;
-    background: rgba( 239, 239, 239, 0.1 );
-    box-shadow: 0 8px 32px 0 rgba( 31, 38, 135, 0.37 );
-    backdrop-filter: blur( 14.5px );
-    -webkit-backdrop-filter: blur( 14.5px );
-    border-radius: 10px;
-    padding: 1rem;
+.light-font {
+  font-size: 0.8rem;
+  font-weight: 100;
+  background: rgba(239, 239, 239, 0.1);
+  box-shadow: 0 8px 32px 0 rgba(31, 38, 135, 0.37);
+  backdrop-filter: blur(14.5px);
+  -webkit-backdrop-filter: blur(14.5px);
+  border-radius: 10px;
+  padding: 1rem;
+  height: 8rem;
+  width: 100%;
 }
 
-.titulo{
-    color: #fff;
-    font-weight: 600;
+.light-font2 {
+  font-size: 0.8rem;
+  font-weight: 100;
+  background: rgba(239, 239, 239, 0.1);
+  box-shadow: 0 8px 32px 0 rgba(31, 38, 135, 0.37);
+  backdrop-filter: blur(14.5px);
+  -webkit-backdrop-filter: blur(14.5px);
+  border-radius: 10px;
+  padding: 1rem;
 }
 
-.glassmorfismo{
-    color: #f8e2ff;
-    background: rgba( 115, 115, 115, 0.45 );
-    box-shadow: 0 8px 32px 0 rgba( 31, 38, 135, 0.37 );
-    backdrop-filter: blur( 4.5px );
-    -webkit-backdrop-filter: blur( 4.5px );
-    border-radius: 10px;
-    border: 1px solid rgba( 255, 255, 255, 0.18 );
+.titulo {
+  color: #fff;
+  font-weight: 600;
 }
 
-.owl-nav{
-    color: #f8e2ff;
-    font-size: 4rem;
+.glassmorfismo {
+  color: #f8e2ff;
+  background: rgba(115, 115, 115, 0.45);
+  box-shadow: 0 8px 32px 0 rgba(31, 38, 135, 0.37);
+  backdrop-filter: blur(4.5px);
+  -webkit-backdrop-filter: blur(4.5px);
+  border-radius: 10px;
+  border: 1px solid rgba(255, 255, 255, 0.18);
+}
+
+.owl-nav {
+  color: #f8e2ff;
+  font-size: 4rem;
 }
 
 .owl-prev {
-    position: absolute;
-    top: 50%;
-    right: 105% !important; 
-    outline: none;
+  position: absolute;
+  top: 50%;
+  right: 105% !important;
+  outline: none;
 }
 
-.owl-next{
-    position: absolute;
-    top: 50%;
-    left: 105% !important;
-    outline: none;
+.owl-next {
+  position: absolute;
+  top: 50%;
+  left: 105% !important;
+  outline: none;
 }
 
-.owl-next:focus, .owl-prev:focus {
-    outline: none;
+.owl-next:focus,
+.owl-prev:focus {
+  outline: none;
 }
 
-
-.clipboard, .clipboard:focus-visible, .clipboard:focus{
-    padding: 0 1.5rem;
-    outline: none;
-    border: none;
+.clipboard,
+.clipboard:focus-visible,
+.clipboard:focus {
+  padding: 0 1.5rem;
+  outline: none;
+  border: none;
 }
 
-.clipboard:hover{
-    cursor: pointer;
-    opacity: 0.8;
-    transition: 1s;
+.clipboard:hover {
+  cursor: pointer;
+  opacity: 0.8;
+  transition: 1s;
 }
 
-
-.footer{
-    font-weight: 100;
-    color: #eab3fa;
+.footer {
+  font-weight: 100;
+  color: #eab3fa;
 }
 
-#pronostico{
-    position: relative;
-    justify-content: center ;
+#pronostico {
+  position: relative;
+  justify-content: center;
 }
 
-#mensaje-error{
-    padding: 1rem;
-    background: rgba( 104, 104, 104, 0.05 );
-    box-shadow: 0 8px 32px 0 rgba( 31, 38, 135, 0.37 );
-    backdrop-filter: blur( 14px );
-    -webkit-backdrop-filter: blur( 14px );
-    border-radius: 10px;
+#mensaje-error {
+  padding: 1rem;
+  background: rgba(104, 104, 104, 0.05);
+  box-shadow: 0 8px 32px 0 rgba(31, 38, 135, 0.37);
+  backdrop-filter: blur(14px);
+  -webkit-backdrop-filter: blur(14px);
+  border-radius: 10px;
 }
 
-#svgError{
-    margin: auto;
-    height: 40px;
-    width: 40px;
+.display-none {
+    display: none;
+    opacity: 0;
+}
+
+.transition-error {
+    display: none;
+}
+
+.transition-error:future(p) {
+    opacity: 1;
+    transition: opacity 2s;
+}
+
+#svgError {
+  margin: auto;
+  height: 40px;
+  width: 40px;
 }
 
 /* Media queries para background */
 
-  @media screen and (max-width: 420px) {
-    body {
-        background: conic-gradient(at right top, rgb(251, 113, 133), rgb(217, 70, 239), rgb(99, 102, 241));
-        height: calc(100% + 1000px);
-        background-repeat: no-repeat;
-    }
-    .owl-nav{
-        color: #f8e2ff;
-        font-size: 4rem;
-    }
-    
-    .owl-prev {
-        position: absolute;
-        top: 50%;
-        right: 19rem !important;
-        outline: none;
-    }
-    
-    .owl-next{
-        position: absolute;
-        top: 50%;
-        left: 19rem !important;
-        outline: none;
-    }
-    
-    .owl-next:focus, .owl-prev:focus {
-        outline: none;
-    }
+@media screen and (max-width: 420px) {
+  body {
+    background: conic-gradient(
+      at right top,
+      rgb(251, 113, 133),
+      rgb(217, 70, 239),
+      rgb(99, 102, 241)
+    );
+    height: calc(100% + 1000px);
+    background-repeat: no-repeat;
   }
-  @media screen and (max-height: 830px) {
-    body {
-        background: conic-gradient(at right top, rgb(251, 113, 133), rgb(217, 70, 239), rgb(99, 102, 241));
-        background-repeat: no-repeat;
-        height: calc(100% + 1000px);
-    }
+  .owl-nav {
+    color: #f8e2ff;
+    font-size: 4rem;
   }
+
+  .owl-prev {
+    position: absolute;
+    top: 50%;
+    right: 19rem !important;
+    outline: none;
+  }
+
+  .owl-next {
+    position: absolute;
+    top: 50%;
+    left: 19rem !important;
+    outline: none;
+  }
+
+  .owl-next:focus,
+  .owl-prev:focus {
+    outline: none;
+  }
+}
+@media screen and (max-height: 830px) {
+  body {
+    background: conic-gradient(
+      at right top,
+      rgb(251, 113, 133),
+      rgb(217, 70, 239),
+      rgb(99, 102, 241)
+    );
+    background-repeat: no-repeat;
+    height: calc(100% + 1000px);
+  }
+}
