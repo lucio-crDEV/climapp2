@@ -5,14 +5,16 @@
 <div class="container-fluid">
   <div id="carousel" class="owl-carousel" style="display: none;">
     <div class="item">
-      <!-- Card del clima -->
+      <!-- Card1 del clima -->
       <div class="text-center mb-4 mx-auto">
         <div class="glassmorfismo card-body">
+          <!-- cargando -->
           <div class="cargando">
             <div class="spinner-grow mb-4" style="width: 3rem; height: 3rem;" role="status">
               <span class="sr-only">Loading...</span>
             </div>
           </div>
+          <!-- contenido -->
           <div class="contenido-clima" style="display: none;">
             <div id="pronostico" class="card-header">
               <h3>
@@ -120,7 +122,8 @@
         </div>
       </div>
     </div>
-    <!-- Segunda Card-->
+
+    <!-- Card2 Clima-->
     <div class="item">
       <div class="glassmorfismo text-center mb-3">
         <div class="card-body">
@@ -179,11 +182,11 @@
         </div>
       </div>
     </div>
-  </div>
 </div>
+
+<!-- Mensaje de error geolocalizacion no obtenida -->
 <div class="glassmorfismo text-center mb-3">
-  <div id="svgWrapper" class="my-4 text-center animate__animated animate__heartBeat animate__repeat-3"
-    style="display: none;">
+  <div id="svgWrapper" class="my-4 text-center animate__animated animate__heartBeat animate__repeat-3">
     <img class="animate__animated animate__heartBeat animate__repeat-2 animate__delay-4s" id="svgError"
       src="{{ url_for('static', filename='svg/error.svg') }}" alt="Geo error" />
   </div>
@@ -193,45 +196,41 @@
     <p id="msjeNavegador" class="display-none">⚠️&nbsp;Asegurate de estar desde tu navegador. </p>
     <div>
       <p class="autoriza display-none font-weight-bold">⛔Debes autorizar el acceso a tu ubicación.
+      </p>
       <p> <small class="autorizaLink display-none font-weight-normal">Si no sabes cómo te dejo el
           siguiente
           <a target="_blank" href="https://support.google.com/chrome/answer/142065?hl=Es-419&ref_topic=7439541"
             style="cursor: pointer; color: #31c5ff" onmouseover="this.style.color='#79d0f3'"
-            onmouseleave="this.style.color='#1ba8df'">
-            Link
-          </a>
-        </small>
-      </p>
+            onmouseleave="this.style.color='#1ba8df'"> Link </a></small>
       </p>
     </div>
     <p class="display-none authOk">
       ✅ Si ya autorizaste los permisos de ubicación puedes recargar la página
       para obtener tus resultados
     </p>
-    <div class="text-center mt-4">
-      <button class="btn btn-primary display-none authOk" onclick="window.location.reload(true);">
-        Recargar
-      </button>
-    </div>
+    <button class="btn btn-primary" onclick="window.location.reload(true);">
+      Recargar
+    </button>
   </div>
-</div>
 
-
-<!-- Modal -->
-<div class="modal fade" id="modal321" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
-  <div class="modal-dialog modal-dialog-centered">
-    <div class="modal-content text-dark">
-      <div class="modal-body pt-4 px-4 text-center">
-        <small>Url de la APP copiada exitosamente ✅</small><br> <br>
-        <p>Envíasela a alguien para que revise su pronóstico climático!</p>
-      </div>
-      <div class="modal-footer flex justify-content-center">
-        <button type="button" class="btn btn-primary" onclick="closeModal()">Cerrar</button>
+  <!-- Modal -->
+  <div class="modal fade" id="modal321" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+    <div class="modal-dialog modal-dialog-centered">
+      <div class="modal-content text-dark">
+        <div class="modal-body pt-4 px-4 text-center">
+          <small>Url de la APP copiada exitosamente ✅</small><br> <br>
+          <p>Envíasela a alguien para que revise su pronóstico climático!</p>
+        </div>
+        <div class="modal-footer flex justify-content-center">
+          <button type="button" class="btn btn-primary" onclick="closeModal()">Cerrar</button>
+        </div>
       </div>
     </div>
   </div>
-</div>
 
 
-<script src="{{ url_for('static', filename='js/main.js') }}"></script>
-{% endblock %}
+  <script src="{{ url_for('static', filename='js/geoError.js') }}"></script>
+  <script src="{{ url_for('static', filename='js/showWeather.js') }}"></script>
+  <script async src="{{ url_for('static', filename='js/modal.js') }}"></script>
+
+  {% endblock %}
